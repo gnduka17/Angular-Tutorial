@@ -7,6 +7,9 @@ import { HomeComponent } from './home/home.component';
 import { TutorPageComponent } from './tutor-page/tutor-page.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { IntroGuideComponent } from './intro-guide/intro-guide.component';
+import { NaviGuideComponent } from './navi-guide/navi-guide.component';
+import { GuideComponent } from './guide/guide.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     HomeComponent,
     TutorPageComponent,
     ProductListComponent,
-    TopBarComponent
+    TopBarComponent,
+    IntroGuideComponent,
+    NaviGuideComponent,
+    GuideComponent
   ],
   imports: [
     BrowserModule,

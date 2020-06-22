@@ -3,10 +3,10 @@
 
 * {
     font-family: 'Roboto', Arial, sans-serif;
-    color: #616161;
+    /* color: #616161; */
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    /* -moz-osx-font-smoothing: grayscale; */
   }
   
   html,body {
@@ -141,6 +141,18 @@
   /* Tutorial Page */
   app-tutor-page div{
     padding-left: 16px;
+    padding-right:16px;
+  }
+  app-tutor-page .GuideDiv{
+    background-color:#1976d2;
+    color:white;
+    padding-top: 20px;
+    position: absolute;
+    margin-right:16px;
+    bottom:0%;
+    border-radius: 25px;
+    overflow-y: auto;
+    height:200px;
   }
   
   /* Top Bar */
