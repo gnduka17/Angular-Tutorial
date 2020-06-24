@@ -10,6 +10,10 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { IntroGuideComponent } from './intro-guide/intro-guide.component';
 import { NaviGuideComponent } from './navi-guide/navi-guide.component';
 import { GuideComponent } from './guide/guide.component';
+import { GuideStatesService } from './guide-states.service';
+import { ManageDataGuideComponent } from './manage-data-guide/manage-data-guide.component';
+import { UserFormsGuideComponent } from './user-forms-guide/user-forms-guide.component';
+import { DeployGuideComponent } from './deploy-guide/deploy-guide.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { GuideComponent } from './guide/guide.component';
     TopBarComponent,
     IntroGuideComponent,
     NaviGuideComponent,
-    GuideComponent
+    GuideComponent,
+    ManageDataGuideComponent,
+    UserFormsGuideComponent,
+    DeployGuideComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +36,7 @@ import { GuideComponent } from './guide/guide.component';
       // { path: '', component: ProductListComponent },
     ])
   ],
-  providers: [],
+  providers: [GuideStatesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
