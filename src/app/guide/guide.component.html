@@ -3,10 +3,12 @@
 	<ng-container [ngSwitch]="guideStates.page">
 		<app-intro-guide *ngSwitchCase="1"></app-intro-guide>
 		<app-navi-guide *ngSwitchCase="2"></app-navi-guide>
-    <app-manage-data-guide *ngSwitchCase="3"></app-manage-data-guide>
-    <app-user-forms-guide *ngSwitchCase="4"></app-user-forms-guide>
-    <app-deploy-guide *ngSwitchCase="5"></app-deploy-guide>
+		<app-manage-data-guide *ngSwitchCase="3"></app-manage-data-guide>
+		<app-user-forms-guide *ngSwitchCase="4"></app-user-forms-guide>
+		<app-deploy-guide *ngSwitchCase="5"></app-deploy-guide>
 	</ng-container>
-	<button (click)="guideStates.page = guideStates.page-1">Back</button>
-	<button (click)="guideStates.page = guideStates.page+1">Next</button>
+	<div>
+		<button class="backButton" (click)="guideStates.page = guideStates.page-1">Back</button>
+		<button class="nextButton" (click)="guideStates.page = guideStates.page+1">Next</button>
+	</div>
 </div>

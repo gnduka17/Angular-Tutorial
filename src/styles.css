@@ -129,6 +129,7 @@
   }
   app-home .button{
     background-color: #1976d2;
+    color: white;
     /* text-align: center; */
     /* display: block; */
     /* width:20%; */
@@ -143,7 +144,7 @@
     padding-left: 16px;
     padding-right:16px;
   }
-  app-tutor-page .GuideDiv{
+  .GuideDiv{
     background-color:#1976d2;
     color:white;
     padding-top: 20px;
@@ -153,6 +154,13 @@
     border-radius: 25px;
     overflow-y: auto;
     height:200px;
+  }
+  .nextButton{
+    float: right;
+    margin-bottom:10px;
+  }
+  .backButton{
+    margin-bottom:10px;
   }
   
   /* Top Bar */
