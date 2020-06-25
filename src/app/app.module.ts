@@ -14,6 +14,9 @@ import { GuideStatesService } from './guide-states.service';
 import { ManageDataGuideComponent } from './manage-data-guide/manage-data-guide.component';
 import { UserFormsGuideComponent } from './user-forms-guide/user-forms-guide.component';
 import { DeployGuideComponent } from './deploy-guide/deploy-guide.component';
+import { StackblitzTipsComponent } from './stackblitz-tips/stackblitz-tips.component';
+import { IntroStep1Component } from './intro-step1/intro-step1.component';
+import { TemplateSyntaxComponent } from './template-syntax/template-syntax.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { DeployGuideComponent } from './deploy-guide/deploy-guide.component';
     GuideComponent,
     ManageDataGuideComponent,
     UserFormsGuideComponent,
-    DeployGuideComponent
+    DeployGuideComponent,
+    StackblitzTipsComponent,
+    IntroStep1Component,
+    TemplateSyntaxComponent
   ],
   imports: [
     BrowserModule,

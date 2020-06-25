@@ -11,5 +11,7 @@ export class TutorPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
+
 
 }

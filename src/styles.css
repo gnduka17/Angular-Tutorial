@@ -13,6 +13,7 @@
     margin: 0;
     padding: 0;
     height:100%;
+    width: 100%;
   }
   
   .homeContainer {
@@ -31,6 +32,7 @@
   
   h2 {
     font-size: 20px;
+    text-align: center;
   }
   
   h1, h2 {
@@ -45,7 +47,7 @@
   
   a {
     cursor: pointer;
-    color: #1976d2;
+    color: #393939;
     text-decoration: none;
   }
   
@@ -105,6 +107,7 @@
     color: #1976d2;
     padding-right: 4px;
   }
+
   /* Home Page */
   app-home .bodyContainer{
     background-color: #393939;
@@ -141,19 +144,23 @@
 
   /* Tutorial Page */
   app-tutor-page div{
-    padding-left: 16px;
-    padding-right:16px;
+    padding-left: 15px;
+    padding-right:15px;
+    margin-right: 16px;
+    margin-left: 16px;
   }
   .GuideDiv{
     background-color:#1976d2;
     color:white;
+    position: absolute;
+    left:0;
+    right: 0;
     padding-top: 20px;
     position: absolute;
-    margin-right:16px;
     bottom:0%;
     border-radius: 25px;
     overflow-y: auto;
-    height:200px;
+    height:20px;
   }
   .nextButton{
     float: right;
