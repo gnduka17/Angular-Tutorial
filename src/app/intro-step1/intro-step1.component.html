@@ -1,8 +1,18 @@
+<h2 id="output">Output<a title="Link to this heading" class="header-link" aria-hidden="true" href="start#output"><i class="material-icons">link</i></a></h2>
+<p>To make the "Notify Me" button work, you need to configure two things:</p>
+<ul>
+<li>the product alert component to emit an event when the user clicks "Notify Me"</li>
+<li>the product list component to act on that event</li>
+</ul>
+<ol>
 <li>
-	<p>Add the product descriptions. On the <code>&lt;p&gt;</code> element, use an
-		<code>*<a href="api/common/NgIf" class="code-anchor">ngIf</a></code> directive so that Angular only creates the
-		<code>&lt;p&gt;</code> element if the current product has a description.</p>
-	<p>The app now displays the name and description of each product in the list. Notice that the final product does not
-		have a description paragraph. Because the product's description property is empty, Angular doesn't create the
-		<code>&lt;p&gt;</code> element—including the word "Description".</p>
+<p>Open <code>product-alerts.component.ts</code>.</p>
 </li>
+<li>
+<p>Import <code><a href="api/core/Output" class="code-anchor">Output</a></code> and <code><a href="api/core/EventEmitter" class="code-anchor">EventEmitter</a></code> from <code>@angular/core</code>:</p>
+
+</li>
+<li>
+<p>In the component class, define a property named <code>notify</code> with an <code>@<a href="api/core/Output" class="code-anchor">Output</a>()</code> decorator and an instance of <code><a href="api/core/EventEmitter" class="code-anchor">EventEmitter</a>()</code>. This allows the product alert component to emit an event when the value of the notify property changes.</p>
+</li>
+</ol>

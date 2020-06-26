@@ -108,7 +108,179 @@ export class GuideComponent implements OnInit {
 		<code>&lt;p&gt;</code> element—including the word \"Description\".</p>\
 </li>",
 // STEP 5
+"<li>\
+	<p>Add a button so users can share a product with friends. Bind the button's <code>click</code> event to the\
+		<code>share()</code> method (in <code>product-list.component.ts</code>). Event binding uses a set of\
+		parentheses, <code>( )</code>, around the event, as in the following <code>&lt;button&gt;</code> element:</p>\
+	<p>Each product now has a \"Share\" button:</p>\
+	<div class=\"lightbox\">\
+		<img src=\"generated/images/guide/start/template-syntax-product-share-button.png\" alt=\"Share button added for each product\" width=\"259\" height=\"376\">\
+  </div>\
+	<p>Test the \"Share\" button:</p>\
+	<div class=\"lightbox\">\
+			<img src=\"generated/images/guide/start/template-syntax-product-share-alert.png\" alt=\"Alert box indicating product has been shared\" width=\"330\" height=\"104\">\
+  </div>\
+</li>",
+// CONCLUDE TEMPLATE SYNTAX
+"<p>The app now has a product list and sharing feature.\
+	In the process, you've learned to use five common features of Angular's template syntax:</p>\
+<ul>\
+	<li>*ngFor</li>\
+	<li>*ngIf</li>\
+	<li>Interpolation <code>{{ }}</code></li>\
+	<li>Property binding <code>[ ]</code></li>\
+	<li>Event binding <code>( )</code></li>\
+</ul>\
+<div>\
+	<p>For a fuller introduction to Angular's template syntax, see <a\
+			href=\"guide/architecture-components#template-syntax\" title=\"Template Syntax\">Introduction to components and\
+			templates</a>.</p>\
+</div>",
+// COMPONENTS 
+"<h2>Components</h2>\
+<p><em>Components</em> define areas of responsibility in the user interface, or UI,\
+	that let you reuse sets of UI functionality.\
+	You've already built one with the product list component.</p>\
+<p>A component consists of three things:</p>\
+<ul>\
+	<li><strong>A component class</strong> that handles data and functionality. In the previous section, the product\
+		data and the <code>share()</code> method in the component class handle data and functionality, respectively.\
+	</li>\
+	<li><strong>An HTML template</strong> that determines the UI. In the previous section, the product list's HTML\
+		template displays the name, description, and a \"Share\" button for each product.</li>\
+	<li><strong>Component-specific styles</strong> that define the look and feel.\
+		Though product list does not define any styles, this is where component CSS\
+		resides.</li>\
+</ul>\
+<p>An Angular application comprises a tree of components, in which each Angular component has a specific purpose and\
+	responsibility.</p>\
+<p>Currently, the example app has three components:</p>\
+<ul>\
+	<li><code>app-root</code> (orange box) is the application shell. This is the first component to load and the parent\
+		of all other components. You can think of it as the base page.</li>\
+	<li><code>app-top-bar</code> (blue background) is the store name and checkout button.</li>\
+	<li><code>app-product-list</code> (purple box) is the product list that you modified in the previous section.</li>\
+</ul>\
+<p>The next section expands the app's capabilities by adding a new component—a product alert—as a child of the product\
+	list component.</p>\
+<div>\
+	<p>For more information about components and how they interact with templates, see <a\
+			href=\"guide/architecture-components\"\
+			title=\"Concepts > Introduction to Components and Templates\">Introduction to Components</a>.</p>\
+</div>",
+// INPUT INTRO
+"<h2>Input</h2>\
+<p>Currently, the product list displays the name and description of each product.\
+	The product list component also defines a <code>products</code> property that contains imported data for each\
+	product from the <code>products</code> array in <code>products.ts</code>.</p>\
+<p>The next step is to create a new alert feature that takes a product as an input. The alert checks the product's\
+	price, and, if the price is greater than $700, displays a \"Notify Me\" button that lets users sign up for\
+	notifications when the product goes on sale.</p>",
+// STEP 1
+"	<li>\
+		<p>Create a new product alerts component.</p>\
+		<ol>\
+			<li>\
+				<p>Right click on the <code>app</code> folder and use the <code>Angular Generator</code> to generate a\
+					new component named <code>product-alerts</code>.</p>\
+				<div class=\"lightbox\">\
+					<img src=\"generated/images/guide/start/generate-component.png\" alt=\"StackBlitz command to generate component\" width=\"407\" height=\"368\">\
+        </div>\
+				<p>The generator creates starter files for all three parts of the component:</p>\
+					<ul>\
+						<li><code>product-alerts.component.ts</code></li>\
+						<li><code>product-alerts.component.html</code></li>\
+						<li><code>product-alerts.component.css</code></li>\
+					</ul>\
+			</li>\
+		</ol>\
+	</li>",
+// STEP 2
+"	<li>\
+		<p>Open <code>product-alerts.component.ts</code>.</p>\
+		<ol>\
+			<li>\
+				<p>Notice the <code>@<a href=\"api/core/Component\" class=\"code-anchor\">Component</a>()</code> decorator.\
+					This indicates that the following class is a component. It provides metadata about the component,\
+					including its selector, templates, and styles.</p>\
+				<ul>\
+					<li>\
+						<p>The <code>selector</code> identifies the component. The selector is the name you give the\
+							Angular component when it is rendered as an HTML element on the page. By convention, Angular\
+							component selectors begin with the prefix <code>app-</code>, followed by the component name.\
+						</p>\
+					</li>\
+					<li>\
+						<p>The template and style filenames reference the HTML and CSS files that StackBlitz generates.\
+						</p>\
+					</li>\
+				</ul>\
+			</li>\
+			<li>\
+				<p>The component definition also exports the class, <code>ProductAlertsComponent</code>, which handles\
+					functionality for the component.</p>\
+			</li>\
+		</ol>\
+	</li>",
+// STEP 3
+"	<li>\
+		<p>Set up the new product alerts component to receive a product as input:</p>\
+		<ol>\
+			<li>\
+				<p>Import <code><a href=\"api/core/Input\" class=\"code-anchor\">Input</a></code> from\
+					<code>@angular/core</code>.</p>\
+			</li>\
+			<li>\
+				<p>In the <code>ProductAlertsComponent</code> class definition, define a property named\
+					<code>product</code> with an <code>@<a href=\"api/core/Input\" class=\"code-anchor\">Input</a>()</code>\
+					decorator. The <code>@<a href=\"api/core/Input\" class=\"code-anchor\">Input</a>()</code> decorator\
+					indicates that the property value passes in from the component's parent, the product list component.\
+				</p>\
+			</li>\
+		</ol>\
+	</li>",
+// STEP 4
+"<li>\
+		<p>Define the view for the new product alert component.</p>\
+		<ol>\
+			<li>Open the <code>product-alerts.component.html</code> template and replace the placeholder paragraph with\
+				a \"Notify Me\" button that appears if the product price is over $700.</li>\
+		</ol>\
+	</li>",
+// STEP 5
+"	<li>\
+		<p>Display the new product alert component as a child of the product list.</p>\
+		<ol>\
+			<li>\
+				<p>Open <code>product-list.component.html</code>.</p>\
+			</li>\
+			<li>\
+				<p>To include the new component, use its selector, <code>app-product-alerts</code>, as you would an HTML\
+					element.</p>\
+			</li>\
+			<li>\
+				<p>Pass the current product as input to the component using property binding.</p>\
+			</li>\
+		</ol>\
+	</li>",
+// CONCLUDE INPUT
+  "<p>The new product alert component takes a product as input from the product list. With that input, it shows or hides\
+	the \"Notify Me\" button, based on the price of the product. The Phone XL price is over $700, so the \"Notify Me\"\
+	button appears on that product.</p>\
+<div class=\"lightbox\">\
+	<img src=\"generated/images/guide/start/product-alert-button.png\" alt=\"Product alert button added to products over $700\" width=\"259\" height=\"406\">\
+</div>\
+	<div>\
+		<p>See <a href=\"guide/component-interaction\"\
+				title=\"Components &amp; Templates > Component Interaction\">Component Interaction</a> for more\
+			information about passing data from a parent to child component, intercepting and acting upon a value from\
+			the parent, and detecting and acting on changes to input property values.</p>\
+	</div>",
+// OUTPUT
 "",
+// NEXT STEPS
+"",
+
   ];
 
   constructor(public guideStates: GuideStatesService) {}
