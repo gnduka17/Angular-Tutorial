@@ -9,7 +9,7 @@ import { GuideStatesService } from "../guide-states.service";
 export class GuideComponent implements OnInit {
   currentStep = 0;
   content = [
-    // INTRO
+    // ~~~~~~ PART 1 INTRO ~~~~~~
     "<h2><strong>Part 1: Getting Started With a Basic Angular App</strong></h2><hr> \
   <ul> \
   <li> <p> You are now staring at an online IDE called Stackblitz. You can  create Angular and React projects that are immediately online & shareable via link in just one click.</p></li> \
@@ -136,12 +136,13 @@ export class GuideComponent implements OnInit {
 			href=\"guide/architecture-components#template-syntax\" title=\"Template Syntax\">Introduction to components and\
 			templates</a>.</p>\
 </div>",
-// COMPONENTS 
+// COMPONENTS INTRO
 "<h2>Components</h2>\
 <p><em>Components</em> define areas of responsibility in the user interface, or UI,\
 	that let you reuse sets of UI functionality.\
-	You've already built one with the product list component.</p>\
-<p>A component consists of three things:</p>\
+	You've already built one with the product list component.</p>",
+// PART 2 COMPONENT 
+"<p>A component consists of three things:</p>\
 <ul>\
 	<li><strong>A component class</strong> that handles data and functionality. In the previous section, the product\
 		data and the <code>share()</code> method in the component class handle data and functionality, respectively.\
@@ -153,15 +154,17 @@ export class GuideComponent implements OnInit {
 		resides.</li>\
 </ul>\
 <p>An Angular application comprises a tree of components, in which each Angular component has a specific purpose and\
-	responsibility.</p>\
-<p>Currently, the example app has three components:</p>\
+	responsibility.</p>",
+// PART 3 COMPONENT
+"<p>Currently, the example app has three components:</p>\
 <ul>\
 	<li><code>app-root</code> (orange box) is the application shell. This is the first component to load and the parent\
 		of all other components. You can think of it as the base page.</li>\
 	<li><code>app-top-bar</code> (blue background) is the store name and checkout button.</li>\
 	<li><code>app-product-list</code> (purple box) is the product list that you modified in the previous section.</li>\
-</ul>\
-<p>The next section expands the app's capabilities by adding a new component—a product alert—as a child of the product\
+</ul>",
+// CONCLUDE COMPONENT
+"<p>The next section expands the app's capabilities by adding a new component—a product alert—as a child of the product\
 	list component.</p>\
 <div>\
 	<p>For more information about components and how they interact with templates, see <a\
@@ -276,10 +279,103 @@ export class GuideComponent implements OnInit {
 			information about passing data from a parent to child component, intercepting and acting upon a value from\
 			the parent, and detecting and acting on changes to input property values.</p>\
 	</div>",
-// OUTPUT
-"",
+// OUTPUT INTRO
+"<h2>Output</h2>\
+<p>To make the \"Notify Me\" button work, you need to configure two things:</p>\
+<ul>\
+	<li>the product alert component to emit an event when the user clicks \"Notify Me\"</li>\
+	<li>the product list component to act on that event</li>\
+</ul>",
+// STEP 1
+"<li>\
+		<p>Open <code>product-alerts.component.ts</code>.</p>\
+	</li>",
+// STEP 2
+"<li>\
+		<p>Import <code><a href=\"api/core/Output\" class=\"code-anchor\">Output</a></code> and\
+			<code><a href=\"api/core/EventEmitter\" class=\"code-anchor\">EventEmitter</a></code> from\
+			<code>@angular/core</code>:</p>\
+	</li>",
+// STEP 3
+"<li>\
+		<p>In the component class, define a property named <code>notify</code> with an\
+			<code>@<a href=\"api/core/Output\" class=\"code-anchor\">Output</a>()</code> decorator and an instance of\
+			<code><a href=\"api/core/EventEmitter\" class=\"code-anchor\">EventEmitter</a>()</code>. This allows the product\
+			alert component to emit an event when the value of the notify property changes.</p>\
+	</li>",
+//ALERT 
+"<div>\
+	<p> When the Angular CLI generates a new component, it includes an empty constructor, the\
+		<code><a href=\"api/core/OnInit\" class=\"code-anchor\">OnInit</a></code> interface, and the <code>ngOnInit()</code>\
+		method.\
+		Since the following example isn't using them, they are omitted here for brevity.</p>\
+</div>",
+// STEP 4
+"<li>\
+		<p>In the product alert template, <code>product-alerts.component.html</code>, update the \"Notify Me\" button with\
+			an event binding to call the <code>notify.emit()</code> method.</p>\
+	</li>",
+// STEP 5
+"	<li>\
+		<p>Next, define the behavior that should happen when the user clicks the button. Recall that it's the parent,\
+			product list component—not the product alerts component—that acts when the child raises the event. In\
+			<code>product-list.component.ts</code>, define an <code>onNotify()</code> method, similar to the\
+			<code>share()</code> method:</p>\
+	</li>",
+// STEP 6
+"<li>\
+		<p>Finally, update the product list component to receive output from the product alerts component.</p>\
+		<p>In <code>product-list.component.html</code>, bind the <code>app-product-alerts</code> component (which is\
+			what displays the \"Notify Me\" button) to the <code>onNotify()</code> method of the product list component.\
+		</p>\
+	</li>",
+// STEP 7
+"	<li>\
+		<p>Try the \"Notify Me\" button:</p>\
+		<div class=\"lightbox\">\
+			<img src=\"generated/images/guide/start/product-alert-notification.png\" alt=\"Product alert notification confirmation dialog\" width=\"329\" height=\"104\">\
+    </div>\
+	</li>",
+
+//ALERT
+"<p>See <a href=\"guide/component-interaction\" title=\"Components &amp; Templates > Component Interaction\">Component\
+			Interaction</a> for more information about listening for events from child components, reading child\
+		properties or invoking child methods, and using a service for bi-directional communication between components.\
+	</p>",
+
 // NEXT STEPS
-"",
+"<h2>Next steps</h2>\
+<p>Congratulations! You've completed your first Angular app!</p>\
+<p>You have a basic online store catalog with a product list, \"Share\" button, and \"Notify Me\" button.\
+	You've learned about the foundation of Angular: components and template syntax.\
+	You've also learned how the component class and template interact, and how components communicate with each other.\
+</p>",
+// CONCLUDE STEP 1
+"<li>\
+		Next section, \"In-app navigation\", you will create a product details page that can be accessed by clicking a product name and that has its own URL\
+		pattern.</li>",
+
+// ~~~~~~~~ PART 2 IN APP NAVIGATION ~~~~~~~~~
+"<h1>In-app navigation</h1>\
+	<p>At the end of <a href=\"start\" title=\"Get started with a basic Angular app\">part 1</a>, the online store\
+		application has a basic product catalog.\
+		The app doesn't have any variable states or navigation.\
+		There is one URL, and that URL always displays the \"My Store\" page with a list of products and their\
+		descriptions.</p>",
+//INTRO 
+    "<p>This guide shows you how to use Angular <a href=\"guide/glossary#router\" title=\"Router definition\>routing</a> to\
+		give the user in-app navigation. In a single-page app, instead of loading new pages, you show different\
+		components and data to the user based on where the user is in the application.</p>\
+	<p>The router lets you display full product details in separate <a href=\"guide/glossary#view\"\
+			title=\"View definition\">views</a>, each with its own URL. Routing enables navigation from one view to the\
+		next (within the same page) as users perform tasks such as the following:</p>\
+	<ul>\
+		<li>Entering a URL in the address bar to navigate to a corresponding view.</li>\
+		<li>Clicking links on the page to navigate to a new view.</li>\
+		<li>Clicking the browser's back and forward buttons to navigate backward and forward through the browser\
+			history.</li>\
+	</ul>",
+
 
   ];
 

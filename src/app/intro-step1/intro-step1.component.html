@@ -1,18 +1,132 @@
-<h2 id="output">Output<a title="Link to this heading" class="header-link" aria-hidden="true" href="start#output"><i class="material-icons">link</i></a></h2>
-<p>To make the "Notify Me" button work, you need to configure two things:</p>
-<ul>
-<li>the product alert component to emit an event when the user clicks "Notify Me"</li>
-<li>the product list component to act on that event</li>
-</ul>
-<ol>
-<li>
-<p>Open <code>product-alerts.component.ts</code>.</p>
-</li>
-<li>
-<p>Import <code><a href="api/core/Output" class="code-anchor">Output</a></code> and <code><a href="api/core/EventEmitter" class="code-anchor">EventEmitter</a></code> from <code>@angular/core</code>:</p>
+<div class="content">
+	
+	
 
-</li>
-<li>
-<p>In the component class, define a property named <code>notify</code> with an <code>@<a href="api/core/Output" class="code-anchor">Output</a>()</code> decorator and an instance of <code><a href="api/core/EventEmitter" class="code-anchor">EventEmitter</a>()</code>. This allows the product alert component to emit an event when the value of the notify property changes.</p>
-</li>
-</ol>
+	<h2 id="registering-a-route">Registering a route<a title="Link to this heading" class="header-link"
+			aria-hidden="true" href="start/start-routing#registering-a-route"><i class="material-icons">link</i></a>
+	</h2>
+	<p>The app is already set up to use the Angular
+		<code><a href="api/router/Router" class="code-anchor">Router</a></code> and to use routing to navigate to the
+		product list component you modified earlier. This section shows you how to define a route to show individual
+		product details.</p>
+	<ol>
+		<li>
+			<p>Generate a new component for product details. Give the component the name <code>product-details</code>.
+			</p>
+			<p>Reminder: In the file list, right-click the <code>app</code> folder, choose
+				<code>Angular Generator</code> and
+				<code><a href="api/core/Component" class="code-anchor">Component</a></code>.</p>
+		</li>
+		<li>
+			<p>In <code>app.module.ts</code>, add a route for product details, with a <code>path</code> of
+				<code>products/:productId</code> and <code>ProductDetailsComponent</code> for the
+				<code>component</code>.</p>
+			<p>A route associates one or more URL paths with a component.</p>
+		</li>
+		<li>
+			<p>The directive configures the component template to define how the user navigates to the route or URL.
+				When the user clicks a product name, the app displays the details for that product.</p>
+			<ol>
+				<li>
+					<p>Open <code>product-list.component.html</code>.</p>
+				</li>
+				<li>
+					<p>Update the <code>*<a href="api/common/NgForOf" class="code-anchor">ngFor</a></code> directive to
+						assign each index in the <code>products</code> array to the <code>productId</code> variable when
+						iterating over the list.</p>
+				</li>
+				<li>
+					<p>Modify the product name anchor to include a
+						<code><a href="api/router/RouterLink" class="code-anchor">routerLink</a></code>.</p>
+				</li>
+			</ol>
+			<p> The RouterLink directive gives the router control over the anchor element. In this case, the route, or
+				URL, contains one fixed segment, <code>/products</code>, while the final segment is variable, inserting
+				the id property of the current product. For example, the URL for a product with an <code>id</code> of 1
+				will be similar to <code>https://getting-started-myfork.stackblitz.io/products/1</code>.</p>
+		</li>
+		<li>
+			<p>Test the router by clicking a product name. The app displays the product details component, which
+				currently always says "product-details works!"</p>
+			<p>Notice that the URL in the preview window changes. The final segment is <code>products/#</code> where
+				<code>#</code> is the number of the route you clicked.</p>
+			<div class="lightbox">
+				<img src="generated/images/guide/start/product-details-works.png" alt="Product details view with updated URL" width="259" height="162">
+</div>
+		</li>
+	</ol>
+	<h2 id="using-route-information">Using route information<a title="Link to this heading" class="header-link"
+			aria-hidden="true" href="start/start-routing#using-route-information"><i class="material-icons">link</i></a>
+	</h2>
+	<p>The product details component handles the display of each product. The Angular Router displays components based
+		on the browser's URL and your defined routes. This section shows you how to use the Angular Router to combine
+		the <code>products</code> data and route information to display the specific details for each product.</p>
+	<ol>
+		<li>
+			<p>Open <code>product-details.component.ts</code></p>
+		</li>
+		<li>
+			<p>Arrange to use product data from an external file.</p>
+			<ol>
+				<li>
+					<p>Import <code><a href="api/router/ActivatedRoute" class="code-anchor">ActivatedRoute</a></code>
+						from the <code>@angular/router</code> package, and the <code>products</code> array from
+						<code>../products</code>.</p>
+				</li>
+				<li>
+					<p>Define the <code>product</code> property and inject the
+						<code><a href="api/router/ActivatedRoute" class="code-anchor">ActivatedRoute</a></code> into the
+						constructor by adding it as an argument within the constructor's parentheses.</p>
+					<p>The <code><a href="api/router/ActivatedRoute" class="code-anchor">ActivatedRoute</a></code> is
+						specific to each routed component that the Angular Router loads. It contains information about
+						the
+						route, its parameters, and additional data associated with the route.</p>
+					<p>By injecting the
+						<code><a href="api/router/ActivatedRoute" class="code-anchor">ActivatedRoute</a></code>, you are
+						configuring the component to use a <em>service</em>. The <a href="start/start-data"
+							title="Try it: Managing Data">Managing Data</a> page covers services in more detail.</p>
+				</li>
+			</ol>
+		</li>
+	</ol>
+	<ol>
+		<li>
+			<p>In the <code>ngOnInit()</code> method, subscribe to route parameters and fetch the product based on the
+				<code>productId</code>.</p>
+			<p>The route parameters correspond to the path variables you define in the route. The URL that matches the
+				route provides the <code>productId</code>. Angular uses the <code>productId</code> to display the
+				details for each unique product.</p>
+		</li>
+		<li>
+			<p>Update the template to display product details information inside an
+				<code>*<a href="api/common/NgIf" class="code-anchor">ngIf</a></code>.</p>
+		</li>
+	</ol>
+	<p>Now, when users click on a name in the product list, the router navigates them to the distinct URL for the
+		product, swaps out the product list component for the product details component, and displays the product
+		details.</p>
+	<div class="lightbox">
+		<img src="generated/images/guide/start/product-details-routed.png" alt="Product details page with updated URL and full details displayed" width="259" height="225">
+</div>
+		<div class="alert is-helpful">
+			<p>For more information about the Angular Router, see <a href="guide/router"
+					title="Routing &amp; Navigation guide">Routing &amp; Navigation</a>.</p>
+		</div>
+		<h2 id="next-steps">Next steps<a title="Link to this heading" class="header-link" aria-hidden="true"
+				href="start/start-routing#next-steps"><i class="material-icons">link</i></a></h2>
+		<p>Congratulations! You have integrated routing into your online store.</p>
+		<ul>
+			<li>Products are linked from the product list view to individual products.</li>
+			<li>Users can click on a product name from the list to see details in a new view, with a distinct URL/route.
+			</li>
+		</ul>
+		<p>To continue exploring Angular, choose either of the following options:</p>
+		<ul>
+			<li><a href="start/start-data" title="Try it: Managing Data">Continue to the "Managing Data" section</a> to
+				add a shopping cart feature, use a service to manage the cart data and use HTTP to retrieve external
+				data for shipping prices.</li>
+			<li><a href="start/start-deployment" title="Try it: Deployment">Skip ahead to the Deployment section</a> to
+				deploy your app to Firebase or move to local development.</li>
+		</ul>
+
+	</div>
