@@ -1,21 +1,19 @@
 <div class="GuideDiv">
-	<!-- <router-outlet name="guideInstructions"></router-outlet> -->
-	<!-- <ng-container [ngSwitch]="guideStates.page">
-		<app-intro-guide *ngSwitchCase="1"></app-intro-guide>
-    <app-stackblitz-tips *ngSwitchCase="2" (activate)="onActivate($event)"></app-stackblitz-tips>
-    <app-template-syntax *ngSwitchCase="3"></app-template-syntax>
-    <app-intro-step1 *ngSwitchCase="4"></app-intro-step1>
-
-		<app-navi-guide *ngSwitchCase="5"></app-navi-guide>
-		<app-manage-data-guide *ngSwitchCase="6"></app-manage-data-guide>
-		<app-user-forms-guide *ngSwitchCase="7"></app-user-forms-guide>
-		<app-deploy-guide *ngSwitchCase="8"></app-deploy-guide>
-	</ng-container> -->
   <div [innerHTML]="content[currentStep]"></div>
+
+  <div id="userinput">
+    <h2>Products</h2>
+    <div *ngFor="let product of products">
+    </div>
+  </div>
+  <!-- <input type="text" value="<h2>Products</h2><div *ngFor=\"let product of products\"> </div>" 
+  #userinput\> -->
+
+
+  <button (click)="copyInputMessage(userinput)" value="click to copy" >Copy from Textbox</button>
+
 	<div>
 		<button class="backButton" (click)="currentStep = currentStep-1">Back</button>
 		<button class="nextButton" (click)="currentStep = currentStep+1">Next</button>
-		<!-- <button class="nextButton" (click)="nextPage(guideStates.page)">Next</button> -->
-
 	</div>
 </div>
