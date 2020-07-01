@@ -6,6 +6,7 @@ import { ProductListComponent } from "./product-list/product-list.component";
 import { IntroGuideComponent } from "./intro-guide/intro-guide.component";
 import { NaviGuideComponent } from "./navi-guide/navi-guide.component";
 import { GuideComponent } from "./guide/guide.component";
+import { CodeExampleComponent } from './code-example/code-example.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  // declarations: [CodeExampleComponent],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

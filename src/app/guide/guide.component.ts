@@ -11,42 +11,36 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 export class GuideComponent implements OnInit {
   currentStep = 0;
 
-  copyInputMessage(inputElement){
-    console.log(inputElement);
-    var elm = document.getElementById(inputElement);
-  // for Internet Explorer
+  // copyInputMessage(inputElement){
+  //   console.log(inputElement);
+  //   var elm = document.getElementById(inputElement);
+  // // for Internet Explorer
 
-  // if(document.body.createTextRange) {
-  //   var range = document.body.createTextRange();
-  //   range.moveToElementText(elm);
-  //   range.select();
+  // // if(document.body.createTextRange) {
+  // //   var range = document.body.createTextRange();
+  // //   range.moveToElementText(elm);
+  // //   range.select();
+  // //   document.execCommand("Copy");
+  // //   alert("Copied div content to clipboard");
+  // // }
+  // if(window.getSelection) {
+  //   // other browsers
+
+  //   var selection = window.getSelection();
+  //   var range = document.createRange();
+  //   // range.selectNodeContents();
+  //   selection.removeAllRanges();
+  //   selection.addRange(range);
   //   document.execCommand("Copy");
   //   alert("Copied div content to clipboard");
   // }
-  if(window.getSelection) {
-    // other browsers
-
-    var selection = window.getSelection();
-    var range = document.createRange();
-    range.selectNodeContents(elm);
-    selection.removeAllRanges();
-    selection.addRange(range);
-    document.execCommand("Copy");
-    alert("Copied div content to clipboard");
-  }
-    // inputElement.select();
-    // document.execCommand('copy');
-    // inputElement.setSelectionRange(0, 0);
-  }
+  //   // inputElement.select();
+  //   // document.execCommand('copy');
+  //   // inputElement.setSelectionRange(0, 0);
+  // }
   content = [
     // ~~~~~~ PART 1 INTRO ~~~~~~
   "<h1 class=\"titleH\">Part 1: Getting Started With a Basic Angular App</h1><hr> \
-  <div #userinput>\
-    <h2>Products</h2>\
-    <div *ngFor=\"let product of products\">\
-    </div>\
-  </div>\
-  <button (click)=\"copyInputMessage(userinput)\" value=\"click to copy\" >Copy from Textbox</button>\
   <p class = \"guideText\"> You are now staring at an online IDE called Stackblitz. You can  create Angular and React projects that are immediately online & shareable via link in just one click.</p>",
   "<p class = \"guideText\">This pane, on the right, shows the starting state of the sample Angular app. It defines a frame with a top bar (containing the store name and checkout icon) and the title for a product list which will be populated and dynamically updated with data from the application).</p>",
   "<p class = \"guideText\">The project pane on the left is where you will be coding. It shows the source files that make up the application, including all of the infrastructure and configuration files. The currently selected file shows up in the editor pane in the middle.</p>",

@@ -1,18 +1,7 @@
 <div class="GuideDiv">
   <div [innerHTML]="content[currentStep]"></div>
-
-  <div id="userinput">
-    <h2>Products</h2>
-    <div *ngFor="let product of products">
-    </div>
-  </div>
-  <!-- <input type="text" value="<h2>Products</h2><div *ngFor=\"let product of products\"> </div>" 
-  #userinput\> -->
-
-
-  <button (click)="copyInputMessage(userinput)" value="click to copy" >Copy from Textbox</button>
-
 	<div>
+    <copy-code></copy-code>
 		<button class="backButton" (click)="currentStep = currentStep-1">Back</button>
 		<button class="nextButton" (click)="currentStep = currentStep+1">Next</button>
 	</div>

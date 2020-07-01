@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { HttpModule} from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,8 @@ import { DeployGuideComponent } from './deploy-guide/deploy-guide.component';
 import { StackblitzTipsComponent } from './stackblitz-tips/stackblitz-tips.component';
 import { IntroStep1Component } from './intro-step1/intro-step1.component';
 import { TemplateSyntaxComponent } from './template-syntax/template-syntax.component';
+import { CodeExampleComponent } from './code-example/code-example.component';
+import { createCustomElement } from '@angular/elements';
 
 @NgModule({
   declarations: [
@@ -33,16 +36,27 @@ import { TemplateSyntaxComponent } from './template-syntax/template-syntax.compo
     DeployGuideComponent,
     StackblitzTipsComponent,
     IntroStep1Component,
-    TemplateSyntaxComponent
+    TemplateSyntaxComponent,
+    CodeExampleComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, HttpModule,
     RouterModule.forRoot([
       // { path: '', component: ProductListComponent },
     ])
   ],
+  entryComponents: [CodeExampleComponent],
   providers: [GuideStatesService],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+   constructor(private injector: Injector) {
+  }
+
+  ngDoBootstrap() {
+    const customButton = createCustomElement(CodeExampleComponent, { injector:this.injector });
+    customElements.define('copy-code', customButton);
+  }
+}
