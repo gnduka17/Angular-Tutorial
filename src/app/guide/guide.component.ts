@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ElementRef, ViewChild, } from "@angular/core";
 import { GuideStatesService } from "../guide-states.service";
 import { Clipboard } from "@angular/cdk/clipboard"
 import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -9,46 +9,28 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
   styleUrls: ["./guide.component.css"]
 })
 export class GuideComponent implements OnInit {
+  @ViewChild('autoScrollDiv') autoScrollDiv: ElementRef;
+
   currentStep = 0;
-
-  // copyInputMessage(inputElement){
-  //   console.log(inputElement);
-  //   var elm = document.getElementById(inputElement);
-  // // for Internet Explorer
-
-  // // if(document.body.createTextRange) {
-  // //   var range = document.body.createTextRange();
-  // //   range.moveToElementText(elm);
-  // //   range.select();
-  // //   document.execCommand("Copy");
-  // //   alert("Copied div content to clipboard");
-  // // }
-  // if(window.getSelection) {
-  //   // other browsers
-
-  //   var selection = window.getSelection();
-  //   var range = document.createRange();
-  //   // range.selectNodeContents();
-  //   selection.removeAllRanges();
-  //   selection.addRange(range);
-  //   document.execCommand("Copy");
-  //   alert("Copied div content to clipboard");
-  // }
-  //   // inputElement.select();
-  //   // document.execCommand('copy');
-  //   // inputElement.setSelectionRange(0, 0);
-  // }
+  backPage(){
+    this.currentStep = this.currentStep-1;
+    this.autoScrollDiv.nativeElement.scrollTop = 0;
+  }
+  nextPage(){
+    this.currentStep = this.currentStep+1;
+    this.autoScrollDiv.nativeElement.scrollTop = 0;
+  }
   content = [
     // ~~~~~~ PART 1 INTRO ~~~~~~
   "<h1 class=\"titleH\">Part 1: Getting Started With a Basic Angular App</h1><hr> \
   <p class = \"guideText\"> You are now staring at an online IDE called Stackblitz. You can  create Angular and React projects that are immediately online & shareable via link in just one click.</p>",
-  "<p class = \"guideText\">This pane, on the right, shows the starting state of the sample Angular app. It defines a frame with a top bar (containing the store name and checkout icon) and the title for a product list which will be populated and dynamically updated with data from the application).</p>",
+  "<p class = \"guideText\">This pane, on the right, shows the starting state of the sample Angular app. It defines a frame with a top bar(containing the store name and checkout icon and the title for a product list which will be populated and dynamically updated with data from the application).</p>",
   "<p class = \"guideText\">The project pane on the left is where you will be coding. It shows the source files that make up the application, including all of the infrastructure and configuration files. The currently selected file shows up in the editor pane in the middle.</p>",
 	// "<p class = \"guideText\">The next section will show you how to fill out the HTML <em>template</em> for the product list, using the provided sample data. This should give you an idea how easy it is to modify and update the page dynamically.</p>",
 
     // STACKBLITZ TIPS
 	"<h2>StackBlitz tips</h2> <hr> \
-    <p class = \"guideText\">Log into StackBlitz so you can save and resume your work. \
+    <p class = \"guideText\">You can log into StackBlitz to save and resume your work. \
 				If you have a GitHub account, you can log into StackBlitz \
 				with that account.<br><br> In order to save your progress, first \
 				fork the project using the Fork button at the top left, \

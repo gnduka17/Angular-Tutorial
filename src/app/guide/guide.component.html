@@ -1,8 +1,8 @@
-<div class="GuideDiv">
+<div class="GuideDiv" #autoScrollDiv>
   <div [innerHTML]="content[currentStep]"></div>
 	<div>
     <copy-code></copy-code>
-		<button class="backButton" (click)="currentStep = currentStep-1">Back</button>
-		<button class="nextButton" (click)="currentStep = currentStep+1">Next</button>
+		<button class="backButton" (click)="backPage()">Back</button>
+		<button class="nextButton" (click)="nextPage()">Next</button>
 	</div>
 </div>
