@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { NgModule, Injector , CUSTOM_ELEMENTS_SCHEMA, ApplicationRef} from '@angular/core';
 import { HttpModule} from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -49,14 +49,15 @@ import { createCustomElement } from '@angular/elements';
   entryComponents: [CodeExampleComponent],
   providers: [GuideStatesService],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
-export class AppModule { 
+export class AppModule {
    constructor(private injector: Injector) {
   }
 
-  ngDoBootstrap() {
+  ngDoBootstrap(appRef: ApplicationRef) {
     const customButton = createCustomElement(CodeExampleComponent, { injector:this.injector });
     customElements.define('copy-code', customButton);
+    appRef.bootstrap(AppComponent);
   }
 }
