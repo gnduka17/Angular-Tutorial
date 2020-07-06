@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, } from "@angular/core";
 import { GuideStatesService } from "../guide-states.service";
 import { Clipboard } from "@angular/cdk/clipboard"
 import {ClipboardModule} from '@angular/cdk/clipboard';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: "app-guide",
@@ -22,9 +23,16 @@ export class GuideComponent implements OnInit {
   }
   content = [
     // ~~~~~~ PART 1 INTRO ~~~~~~
-  "<h1 class=\"titleH\">Part 1: Getting Started With a Basic Angular App</h1><hr> \
-  <copy-code></copy-code> \
-  <p class = \"guideText\"> You are now staring at an online IDE called Stackblitz. You can  create Angular and React projects that are immediately online & shareable via link in just one click.</p>",
+  `<h1 class="titleH">Part 1: Getting Started With a Basic Angular App</h1><hr>
+  <pre>
+    <code>
+        My pre-formatted "quoted" code here.
+        <div></div>
+    </code>
+  </pre>
+  <p class="guideText"> You are now staring at an online IDE called Stackblitz. You can  create Angular and React projects that are immediately online & shareable via link in just one click.</p>`,
+
+
   "<p class = \"guideText\">This pane, on the right, shows the starting state of the sample Angular app. It defines a frame with a top bar(containing the store name and checkout icon and the title for a product list which will be populated and dynamically updated with data from the application).</p>",
   "<p class = \"guideText\">The project pane on the left is where you will be coding. It shows the source files that make up the application, including all of the infrastructure and configuration files. The currently selected file shows up in the editor pane in the middle.</p>",
 	// "<p class = \"guideText\">The next section will show you how to fill out the HTML <em>template</em> for the product list, using the provided sample data. This should give you an idea how easy it is to modify and update the page dynamically.</p>",
@@ -112,7 +120,7 @@ export class GuideComponent implements OnInit {
 <p><em>Components</em> define areas of responsibility in the user interface, or UI,\
 	that let you reuse sets of UI functionality.\
 	You've already built one with the product list component.</p>",
-// PART 2 COMPONENT 
+// PART 2 COMPONENT
 "<p>A component consists of three things:</p>\
 <ul>\
 	<li><strong>A component class</strong> that handles data and functionality. In the previous section, the product\
@@ -274,7 +282,7 @@ export class GuideComponent implements OnInit {
 			<code><a href=\"api/core/EventEmitter\" class=\"code-anchor\">EventEmitter</a>()</code>. This allows the product\
 			alert component to emit an event when the value of the notify property changes.</p>\
 	</li>",
-//ALERT 
+//ALERT
 "<div>\
 	<p> When the Angular CLI generates a new component, it includes an empty constructor, the\
 		<code><a href=\"api/core/OnInit\" class=\"code-anchor\">OnInit</a></code> interface, and the <code>ngOnInit()</code>\
@@ -333,7 +341,7 @@ export class GuideComponent implements OnInit {
 		The app doesn't have any variable states or navigation.\
 		There is one URL, and that URL always displays the \"My Store\" page with a list of products and their\
 		descriptions.</p>",
-//INTRO 
+//INTRO
     "<p>This guide shows you how to use Angular <a href=\"guide/glossary#router\" title=\"Router definition\>routing</a> to\
 		give the user in-app navigation. In a single-page app, instead of loading new pages, you show different\
 		components and data to the user based on where the user is in the application.</p>\
@@ -350,7 +358,11 @@ export class GuideComponent implements OnInit {
 
   ];
 
-  constructor(public guideStates: GuideStatesService) {}
+  constructor(public guideStates: GuideStatesService, private sanitizer: DomSanitizer) {}
+
+  get currentContent() {
+    return this.sanitizer.bypassSecurityTrustHtml(this.content[this.currentStep]);
+  }
 
   ngOnInit() {
     // window.scroll(0, 0);
