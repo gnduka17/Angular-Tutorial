@@ -1,6 +1,6 @@
 <div class="GuideDiv" #autoScrollDiv>
-  <div [innerHTML]="content[currentStep]"></div>
-  <copy-code file="checking file path"></copy-code>
+  <div [innerHTML]="currentContent"></div>
+  <!-- <copy-code file="checking file path"></copy-code> -->
 	<div>
 		<button class="backButton" (click)="backPage()">Back</button>
 		<button class="nextButton" (click)="nextPage()">Next</button>
