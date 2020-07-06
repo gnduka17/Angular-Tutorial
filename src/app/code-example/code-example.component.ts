@@ -6,9 +6,12 @@ import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } fro
   styleUrls: ['./code-example.component.css'],
   // encapsulation: ViewEncapsulation.Native
 })
-export class CodeExampleComponent implements OnInit{
+// export class CodeExampleComponent extends HTMLElement{
+  export class CodeExampleComponent{
 
-  constructor() { }
+  constructor() {
+    // super();
+  }
 
   ngOnInit() {
   }

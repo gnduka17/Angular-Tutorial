@@ -23,6 +23,7 @@ export class GuideComponent implements OnInit {
   content = [
     // ~~~~~~ PART 1 INTRO ~~~~~~
   "<h1 class=\"titleH\">Part 1: Getting Started With a Basic Angular App</h1><hr> \
+  <copy-code></copy-code> \
   <p class = \"guideText\"> You are now staring at an online IDE called Stackblitz. You can  create Angular and React projects that are immediately online & shareable via link in just one click.</p>",
   "<p class = \"guideText\">This pane, on the right, shows the starting state of the sample Angular app. It defines a frame with a top bar(containing the store name and checkout icon and the title for a product list which will be populated and dynamically updated with data from the application).</p>",
   "<p class = \"guideText\">The project pane on the left is where you will be coding. It shows the source files that make up the application, including all of the infrastructure and configuration files. The currently selected file shows up in the editor pane in the middle.</p>",
@@ -59,7 +60,7 @@ export class GuideComponent implements OnInit {
 	<li> \
 		<p>Each product in the list displays the same way, one after another on the page. To iterate over the predefined \
 			list of products, put the *ngFor directive on a &lt;div&gt;, as follows:  \
-		<p>With *ngFor, the &lt;div&gt; repeats for each product in the list.</p> \
+			<p>With *ngFor, the &lt;div&gt; repeats for each product in the list.</p> \
 		<div> \
 			<p><code>*<a href="api/common/NgForOf" class="code-anchor">ngFor</a></code> is a "structural directive".\
 				Structural directives shape or reshape the DOM\'s structure, typically by adding, removing, and\

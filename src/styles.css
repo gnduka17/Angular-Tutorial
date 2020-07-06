@@ -4,7 +4,7 @@
 * {
     font-family: 'Roboto', Arial, sans-serif;
     /* color: #616161; */
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     -webkit-font-smoothing: antialiased;
     /* -moz-osx-font-smoothing: grayscale; */
   }
@@ -109,9 +109,63 @@
     padding-right: 4px;
   }
 
-  /* GuideText */
+  /* Guide */
   .guideText{
     font-size: 15px;
+  }
+  .GuideDiv{
+    background-color:#1976d2;
+    color:white;
+    position: absolute;
+    left:0;
+    right: 0;
+    padding-top: 20px;
+    position: absolute;
+    bottom:0%;
+    border-radius: 25px;
+    overflow-y: auto;
+    height:220px;
+  }
+  .nextButton{
+    float: right;
+    margin-bottom:10px;
+  }
+  .backButton{
+    margin-bottom:10px;
+  }
+  copy-code img{
+    /* display: block; */
+    /* opacity: 0.5; */
+    /* background-color: hotpink; */
+  }
+  .codeBox{
+    background-color:#FAFAFA;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .codeBoxHeader{
+    background-color:#E5E3E3;
+    height: 20px;
+    margin: 0px auto;
+    /* width: 100%; */
+  }
+  .codeBoxCode{
+    /* background-color:rgb(146, 62, 62); */
+    height: 60px;
+  }
+  .copyIcon{
+    /* background-color: yellow; */
+    /* display: inline-block; */
+  }
+  .copyIcon img:hover{
+    /* -webkit-filter: brightness(0); */
+   /* opacity: 0.5; */
+   /* background-color: grey; */
+
+  }
+  app-code-example img{
+    /* background-color: hotpink; */
+
   }
 
   /* Home Page */
@@ -150,30 +204,10 @@
 
   /* Tutorial Page */
   app-tutor-page div{
-    padding-left: 15px;
-    padding-right:15px;
+    /* padding-left: 15px; */
+    /* padding-right:15px; */
     margin-right: 16px;
     margin-left: 16px;
-  }
-  .GuideDiv{
-    background-color:#1976d2;
-    color:white;
-    position: absolute;
-    left:0;
-    right: 0;
-    padding-top: 20px;
-    position: absolute;
-    bottom:0%;
-    border-radius: 25px;
-    overflow-y: auto;
-    height:220px;
-  }
-  .nextButton{
-    float: right;
-    margin-bottom:10px;
-  }
-  .backButton{
-    margin-bottom:10px;
   }
   
   /* Top Bar */
