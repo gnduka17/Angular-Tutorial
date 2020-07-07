@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef, ViewChild, } from "@angular/core";
 import { GuideStatesService } from "../guide-states.service";
 import { Clipboard } from "@angular/cdk/clipboard"
 import {ClipboardModule} from '@angular/cdk/clipboard';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: "app-guide",
@@ -13,7 +15,10 @@ export class GuideComponent implements OnInit {
 
   currentStep = 0;
   backPage(){
-    this.currentStep = this.currentStep-1;
+	this.currentStep = this.currentStep-1;
+	if (this.currentStep < 0){
+		this.currentStep = 0;
+	}
     this.autoScrollDiv.nativeElement.scrollTop = 0;
   }
   nextPage(){
@@ -21,25 +26,20 @@ export class GuideComponent implements OnInit {
     this.autoScrollDiv.nativeElement.scrollTop = 0;
   }
   content = [
-    // ~~~~~~ PART 1 INTRO ~~~~~~
-  "<h1 class=\"titleH\">Part 1: Getting Started With a Basic Angular App</h1><hr> \
-  <copy-code></copy-code> \
-  <p class = \"guideText\"> You are now staring at an online IDE called Stackblitz. You can  create Angular and React projects that are immediately online & shareable via link in just one click.</p>",
-  "<p class = \"guideText\">This pane, on the right, shows the starting state of the sample Angular app. It defines a frame with a top bar(containing the store name and checkout icon and the title for a product list which will be populated and dynamically updated with data from the application).</p>",
-  "<p class = \"guideText\">The project pane on the left is where you will be coding. It shows the source files that make up the application, including all of the infrastructure and configuration files. The currently selected file shows up in the editor pane in the middle.</p>",
-	// "<p class = \"guideText\">The next section will show you how to fill out the HTML <em>template</em> for the product list, using the provided sample data. This should give you an idea how easy it is to modify and update the page dynamically.</p>",
-
-    // STACKBLITZ TIPS
+	// ~~~~~~ PART 1 INTRO ~~~~~~
+	`<h1 class=\"titleH\">Part 1: Getting Started With a Basic Angular App</h1><hr> 
+  <p class = "guideText"> You are now staring at an online IDE called Stackblitz. You can  create Angular and React projects that are immediately online & shareable via link in just one click!</p>`,
+  `<p class = "guideText"><br><br>This pane, on the right, shows the starting state of the sample Angular app. It defines a frame with a top bar (containing the store name and checkout icon and the title for a product list which will be populated and dynamically updated with data from the application).</p>`,
+  `<p class = "guideText"><br><br>The project pane on the left shows the source files that make up the application, including all of the infrastructure and configuration files. <br><br> The currently selected file shows up in the editor pane in the middle where you will be coding.</p>`,
+	// STACKBLITZ TIPS
 	"<h2>StackBlitz tips</h2> <hr> \
-    <p class = \"guideText\">You can log into StackBlitz to save and resume your work. \
+    <p class = \"guideText\">Did you know that you can log into StackBlitz to save and resume your work?<br> <br>\
 				If you have a GitHub account, you can log into StackBlitz \
-				with that account.<br><br> In order to save your progress, first \
+				with that account. In order to save your progress, first \
 				fork the project using the Fork button at the top left, \
 				then you'll be able to save your work to your own StackBlitz \
 				account by clicking the Save button.</p>",
-			// "<h1>StackBlitz tips</h1> <hr> <p class = \"guideText\">To copy a code example from this tutorial, click the icon \
-			// 	at the top right of the code example box, and then paste the \
-			// 	code snippet from the clipboard into StackBlitz.</p>",
+
 			"<h2>StackBlitz tips</h2> <hr> <p class = \"guideText\">If the StackBlitz preview pane isn't showing what you \
 				expect, save and then click the refresh button.</p> \
 			<p class = \"guideText\">StackBlitz is continually improving, so there may be \
@@ -48,54 +48,53 @@ export class GuideComponent implements OnInit {
 			"<h2>StackBlitz tips</h2> <hr> <p class = \"guideText\">When you generate the StackBlitz example apps that \
 				accompany the tutorials, StackBlitz creates the starter \
 				files and mock data for you. The files you'll use throughout \
-				the tutorials are in the <code>src</code> folder of the StackBlitz \
+				the tutorials are in the <strong><em>src</em></strong> folder of the StackBlitz \
         example apps.</p>",
 
     // TEMPLATE SYNTAX...STEP 1
     '<h2><strong>Now Let\'s Get To It!</strong></h2> <hr> \
-    <p class = \"guideText\"> <em><strong>STEP 1:</strong></em> In the <em><strong>product-list</strong></em> folder, open the template file <em><strong>product-list.component.html</strong></em>.</p>',
+    <p class = \"guideText\"> <em><strong>STEP 1:</strong></em>   In the <em><strong>product-list</strong></em> folder, open the template file <em><strong>product-list.component.html</strong></em>.</p>',
     // STEP 2
-    '<p class = \"guideText\"> <em><strong>STEP 2:</strong></em> Modify the product list template to display a list of product names.</p> \
-<ol> \
+    '<p class = \"guideText\"> <em><strong>STEP 2:</strong></em>   Modify the product list template to display a list of product names.</p> \
+<ul> \
 	<li> \
 		<p>Each product in the list displays the same way, one after another on the page. To iterate over the predefined \
-			list of products, put the *ngFor directive on a &lt;div&gt;, as follows:  \
-			<p>With *ngFor, the &lt;div&gt; repeats for each product in the list.</p> \
-		<div> \
-			<p><code>*<a href="api/common/NgForOf" class="code-anchor">ngFor</a></code> is a "structural directive".\
+			list of products, put the <em>*ngFor</em> directive on a <em>&lt;div&gt;</em>, as follows:  \
+			<copy-code></copy-code>\
+			<p>With <em>*ngFor</em>, the <em>&lt;div&gt;</em> repeats for each product in the list. Similar to a for loop.</p> \
+			<p><em>*<a href="/">ngFor</a></em> is a "structural directive".\
 				Structural directives shape or reshape the DOM\'s structure, typically by adding, removing, and\
-				manipulating the elements to which they are attached. Directives with an asterisk, <code>*</code>, are\
+				manipulating the elements to which they are attached. Directives with an asterisk,*, are\
 				structural directives.</p>\
-		</div>\
 	</li>\
 	<li>\
-		<p>To display the names of the products, use the interpolation syntax <code>{{ }}</code>. Interpolation renders\
-			a property\'s value as text. Inside the <code>&lt;div&gt;</code>, add an <code>&lt;h3&gt;</code> to display\
-			the interpolation of the product\'s name property:</p>\
+		<p>To display the names of the products, use the interpolation syntax <strong>{{ }}</strong>. Interpolation renders\
+			a property\'s value as text. Inside the <em><strong>&lt;div&gt;</strong></em>, add an <em><strong>&lt;h3&gt;</strong></em> to display\
+			the interpolation of the product\'s name property:<copy-code></copy-code></p>\
 		<p>The preview pane immediately updates to display the name of each product in the list.</p>\
 	</li>\
-</ol>',
+</ul>',
 // STEP 3
-" <p class = \"guideText\"><em><strong>STEP 3:</strong></em> To make each product name a link to product details, add the <code>&lt;a&gt;</code> element and set its title to\
-		be the product's name by using the property binding <code>[ ]</code> syntax, as follows:</p>\
-	<p>In the preview pane, hold the pointer over a product\
-		name to see the bound name property value, which is\
-		the product name plus the word \"details\".\
-		Interpolation <code>{{ }}</code> lets you render the\
-		property value as text; property binding <code>[ ]</code> lets you\
+" <p class = \"guideText\"><em><strong>STEP 3:</strong></em> To make each product name a link to product details, add the <em><strong>&lt;a&gt;</strong></em> element and set its title to\
+		be the product's name by using the property binding <strong><em>[ ]</em></strong> syntax, as follows:<copy-code></copy-code></p>\
+		<p>Interpolation <strong>{{ }}</strong> lets you render the\
+		property value as text; property binding <strong>[ ]</strong> lets you\
 		use the property value in a template expression.</p>",
+	"<p>In the preview pane, hold the pointer over a product\
+		name to see the bound name property value, which is\
+		the product name plus the word \"details\".",
 // STEP 4
-"<p class = \"guideText\"> <em><strong>STEP 4:</strong></em> Add the product descriptions. On the <code>&lt;p&gt;</code> element, use an\
-		<code>*<a href=\"api/common/NgIf\" class=\"code-anchor\">ngIf</a></code> directive so that Angular only creates the\
-		<code>&lt;p&gt;</code> element if the current product has a description.</p>\
-	<p>The app now displays the name and description of each product in the list. Notice that the final product does not\
+"<p class = \"guideText\"> <em><strong>STEP 4:</strong></em> Add the product descriptions. On the <strong><em>&lt;p&gt;</em></strong> element, use an\
+		<em>*<a>ngIf</a></em> directive so that Angular only creates the\
+		<strong><em>&lt;p&gt;</em></strong> element if the current product has a description.</p><copy-code></copy-code>",
+	"<p>The app now displays the name and description of each product in the list. Notice that the final product does not\
 		have a description paragraph. Because the product's description property is empty, Angular doesn't create the\
-		<code>&lt;p&gt;</code> element—including the word \"Description\".</p>",
+		<em><strong>&lt;p&gt;</strong></em> element—including the word \"Description\".</p>",
 // STEP 5
-"<p class = \"guideText\"> <em><strong>STEP 5:</strong></em>. Add a button so users can share a product with friends. Bind the button's <code>click</code> event to the\
-		<code>share()</code> method (in <code>product-list.component.ts</code>). Event binding uses a set of\
-		parentheses, <code>( )</code>, around the event, as in the following <code>&lt;button&gt;</code> element:</p>\
-	<p>Each product now has a \"Share\" button:</p>\
+"<p class = \"guideText\"> <em><strong>STEP 5:</strong></em>. Add a button so users can share a product with friends. Bind the button's <em><strong>click</strong></em> event to the\
+		<em><strong>share()</strong></em> method (in <em><strong>product-list.component.ts</strong></em>). Event binding uses a set of\
+		parentheses, <strong>( )</strong>, around the event, as in the following <em><strong>&lt;button&gt;</strong></em> element:</p><copy-code></copy-code>",
+	"<p>Each product now has a \"Share\" button:</p>\
 	<p>Test the \"Share\" button:</p>",
 // CONCLUDE TEMPLATE SYNTAX
 "<p class = \"guideText\">The app now has a product list and sharing feature.\
@@ -106,10 +105,10 @@ export class GuideComponent implements OnInit {
 	<li>Interpolation <code>{{ }}</code></li>\
 	<li>Property binding <code>[ ]</code></li>\
 	<li>Event binding <code>( )</code></li>\
-</ul>",
+</ul> We will now move onto components!",
 // COMPONENTS INTRO
-"<h2>Components</h2>\
-<p><em>Components</em> define areas of responsibility in the user interface, or UI,\
+"<h2>Components</h2><hr/>\
+<p><strong><em>Components</em></strong> define areas of responsibility in the user interface, or UI,\
 	that let you reuse sets of UI functionality.\
 	You've already built one with the product list component.</p>",
 // PART 2 COMPONENT 
@@ -350,7 +349,11 @@ export class GuideComponent implements OnInit {
 
   ];
 
-  constructor(public guideStates: GuideStatesService) {}
+  constructor(public guideStates: GuideStatesService, private sanitizer: DomSanitizer) {}
+
+  get currentContent() {
+    return this.sanitizer.bypassSecurityTrustHtml(this.content[this.currentStep]);
+  }
 
   ngOnInit() {
     // window.scroll(0, 0);

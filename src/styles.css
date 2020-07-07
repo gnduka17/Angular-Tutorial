@@ -28,6 +28,7 @@
     margin: 0;
     padding: 0;
     text-align: center;
+    font-weight: lighter;
   }
  
   
@@ -37,7 +38,7 @@
   }
   
   h1, h2 {
-    font-weight: bold;
+    font-weight: lighter;
   }
   
   p {
@@ -133,38 +134,27 @@
   .backButton{
     margin-bottom:10px;
   }
-  copy-code img{
-    /* display: block; */
-    /* opacity: 0.5; */
-    /* background-color: hotpink; */
-  }
   .codeBox{
     background-color:#FAFAFA;
     border-radius: 20px;
     margin-bottom: 10px;
+    margin-top: 10px;
   }
   .codeBoxHeader{
     background-color:#E5E3E3;
     height: 20px;
     margin: 0px auto;
-    /* width: 100%; */
   }
   .codeBoxCode{
-    /* background-color:rgb(146, 62, 62); */
     height: 60px;
   }
   .copyIcon{
     /* background-color: yellow; */
     /* display: inline-block; */
   }
-  .copyIcon img:hover{
-    /* -webkit-filter: brightness(0); */
-   /* opacity: 0.5; */
-   /* background-color: grey; */
-
-  }
-  app-code-example img{
-    /* background-color: hotpink; */
+ 
+  app-code-example img:hover{
+   opacity: 0.5;
 
   }
 
