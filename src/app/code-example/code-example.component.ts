@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter, AfterViewInit, ViewChild } from '@angular/core';
+import { GuideComponent } from '../guide/guide.component';
 
 @Component({
   selector: 'app-code-example',
@@ -7,19 +8,23 @@ import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } fro
   // encapsulation: ViewEncapsulation.Native
 })
 // export class CodeExampleComponent extends HTMLElement{
-  export class CodeExampleComponent{
+  export class CodeExampleComponent implements AfterViewInit{
+    @ViewChild(GuideComponent) guide:GuideComponent;
 
   constructor() {
     // super();
   }
+  text:string;
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    this.text = this.guide.text;
   }
   private clicksCt = 0;
 
   copyCode() {
     this.clicksCt++;
-    console.log("hey i clicked button")
+    console.log("hey i clicked button");
+    console.log(this.text);
   }
 
 }

@@ -3,6 +3,9 @@ import { GuideStatesService } from "../guide-states.service";
 import { Clipboard } from "@angular/cdk/clipboard"
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import { DomSanitizer } from '@angular/platform-browser';
+import hljs from 'highlight.js';
+import javascript from 'highlight.js/lib/languages/javascript';
+hljs.registerLanguage('javascript',javascript);
 
 
 @Component({
@@ -12,8 +15,23 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class GuideComponent implements OnInit {
   @ViewChild('autoScrollDiv') autoScrollDiv: ElementRef;
+  constructor(public guideStates: GuideStatesService, private sanitizer: DomSanitizer) {
+	this.codeHTML = this.stringArray.map(html=>hljs.highlightAuto(html).value);
+  }
 
+  get currentContent() {
+    return this.sanitizer.bypassSecurityTrustHtml(this.content[this.currentStep]);
+  }
+
+
+  ngOnInit() {
+  }
   currentStep = 0;
+  text: string= "<div>HEYYYYYYY!!</div>";
+ 
+  codeHTML;
+  stringArray=['<span style="color:red"> Hello!!!!!!!!</span>'];
+  
   backPage(){
 	this.currentStep = this.currentStep-1;
 	if (this.currentStep < 0){
@@ -27,7 +45,9 @@ export class GuideComponent implements OnInit {
   }
   content = [
 	// ~~~~~~ PART 1 INTRO ~~~~~~
-	`<h1 class=\"titleH\">Part 1: Getting Started With a Basic Angular App</h1><hr> 
+	`
+	<h1 class=\"titleH\">Part 1: Getting Started With a Basic Angular App</h1><hr> 
+	<div> </div>
   <p class = "guideText"> You are now staring at an online IDE called Stackblitz. You can  create Angular and React projects that are immediately online & shareable via link in just one click!</p>`,
   `<p class = "guideText"><br><br>This pane, on the right, shows the starting state of the sample Angular app. It defines a frame with a top bar (containing the store name and checkout icon and the title for a product list which will be populated and dynamically updated with data from the application).</p>`,
   `<p class = "guideText"><br><br>The project pane on the left shows the source files that make up the application, including all of the infrastructure and configuration files. <br><br> The currently selected file shows up in the editor pane in the middle where you will be coding.</p>`,
@@ -55,7 +75,7 @@ export class GuideComponent implements OnInit {
     '<h2><strong>Now Let\'s Get To It!</strong></h2> <hr> \
     <p class = \"guideText\"> <em><strong>STEP 1:</strong></em>   In the <em><strong>product-list</strong></em> folder, open the template file <em><strong>product-list.component.html</strong></em>.</p>',
     // STEP 2
-    '<p class = \"guideText\"> <em><strong>STEP 2:</strong></em>   Modify the product list template to display a list of product names.</p> \
+    '<p class = \"guideText\"> <em><strong>STEP 2:</strong></em> Modify the product list template to display a list of product names.</p> \
 <ul> \
 	<li> \
 		<p>Each product in the list displays the same way, one after another on the page. To iterate over the predefined \
@@ -348,19 +368,4 @@ export class GuideComponent implements OnInit {
 
 
   ];
-
-  constructor(public guideStates: GuideStatesService, private sanitizer: DomSanitizer) {}
-
-  get currentContent() {
-    return this.sanitizer.bypassSecurityTrustHtml(this.content[this.currentStep]);
-  }
-
-  ngOnInit() {
-    // window.scroll(0, 0);
-  }
-  //   onActivate(event) {
-  //     window.scroll(0,0);
-  //     //or document.body.scrollTop = 0;
-  //     //or document.querySelector('body').scrollTo(0,0)
-  // }
 }
