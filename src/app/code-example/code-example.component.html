@@ -1,15 +1,9 @@
 <div class="codeBox">
-    <div style="background-color: red;" class = "codeBoxHeader">
-       
-    </div>
+    <div style="background-color: red;" class = "codeBoxHeader"></div>
     <div class = "codeBoxCode">
-        <p> {{text}}</p>
-        <!-- <p style="color: black;">&lt;div&gt;</p> -->
         <div class="copyIcon">
-        <img  style="width: 20px; float: right; margin-top:5px" src="assets/copyicon.png" title="Click to Copy" (click)="copyCode()">
+         <img  style="width: 20px; float: right; margin-top:5px" src="assets/copyicon.png" title="Click to Copy" (click)="copyCode()">
         </div>
-        <!-- <button style="width: 10px; float: right; background: url('assets/copyicon.png');" (click)="copyCode()" value="click to copy" ></button> -->
-
+        <ng-content></ng-content>
     </div>
-
 </div>

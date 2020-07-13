@@ -1,30 +1,20 @@
-import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter, AfterViewInit, ViewChild } from '@angular/core';
-import { GuideComponent } from '../guide/guide.component';
+import { Component} from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-code-example',
   templateUrl: './code-example.component.html',
   styleUrls: ['./code-example.component.css'],
-  // encapsulation: ViewEncapsulation.Native
 })
-// export class CodeExampleComponent extends HTMLElement{
-  export class CodeExampleComponent implements AfterViewInit{
-    @ViewChild(GuideComponent) guide:GuideComponent;
+  export class CodeExampleComponent{
 
-  constructor() {
-    // super();
-  }
-  text:string;
+  constructor(private sanitizer: DomSanitizer) {}
 
-  ngAfterViewInit() {
-    this.text = this.guide.text;
-  }
   private clicksCt = 0;
 
   copyCode() {
     this.clicksCt++;
-    console.log("hey i clicked button");
-    console.log(this.text);
   }
 
 }

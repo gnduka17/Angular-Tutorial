@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { products } from '../products';
 
 @Component({
@@ -7,6 +7,7 @@ import { products } from '../products';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent {
+  // @Input() public parentData;
 
   products = products;
 

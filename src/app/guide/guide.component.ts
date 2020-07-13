@@ -15,23 +15,15 @@ hljs.registerLanguage('javascript',javascript);
 })
 export class GuideComponent implements OnInit {
   @ViewChild('autoScrollDiv') autoScrollDiv: ElementRef;
-  constructor(public guideStates: GuideStatesService, private sanitizer: DomSanitizer) {
-	this.codeHTML = this.stringArray.map(html=>hljs.highlightAuto(html).value);
-  }
+  constructor(public guideStates: GuideStatesService, private sanitizer: DomSanitizer) {}
 
   get currentContent() {
     return this.sanitizer.bypassSecurityTrustHtml(this.content[this.currentStep]);
   }
+  ngOnInit() {}
 
-
-  ngOnInit() {
-  }
   currentStep = 0;
-  text: string= "<div>HEYYYYYYY!!</div>";
- 
-  codeHTML;
-  stringArray=['<span style="color:red"> Hello!!!!!!!!</span>'];
-  
+
   backPage(){
 	this.currentStep = this.currentStep-1;
 	if (this.currentStep < 0){
@@ -41,13 +33,88 @@ export class GuideComponent implements OnInit {
   }
   nextPage(){
     this.currentStep = this.currentStep+1;
-    this.autoScrollDiv.nativeElement.scrollTop = 0;
+	this.autoScrollDiv.nativeElement.scrollTop = 0;
   }
+  
+  codeCopy=[`
+  <h2>Products</h2>
+  
+  <div *ngFor="let product of products">
+
+  </div>`,
+  `<h2>Products</h2>
+
+  <div *ngFor="let product of products">
+  
+	<h3>
+		{{ product.name }}
+	</h3>
+  
+  </div>`,
+  `<h2>Products</h2>
+
+  <div *ngFor="let product of products">
+  
+	<h3>
+	  <a [title]="product.name + ' details'">
+		{{ product.name }}
+	  </a>
+	</h3>
+  
+  </div>`,
+  `<h2>Products</h2>
+
+  <div *ngFor="let product of products">
+  
+	<h3>
+	  <a [title]="product.name + ' details'">
+		{{ product.name }}
+	  </a>
+	</h3>
+  
+	<p *ngIf="product.description">
+	  Description: {{ product.description }}
+	</p>
+  
+  </div>`,
+  `<h2>Products</h2>
+
+  <div *ngFor="let product of products">
+  
+	<h3>
+	  <a [title]="product.name + ' details'">
+		{{ product.name }}
+	  </a>
+	</h3>
+  
+	<p *ngIf="product.description">
+	  Description: {{ product.description }}
+	</p>
+  
+	<button (click)="share()">
+	  Share
+	</button>
+  
+  </div>`,
+  `import { Component, OnInit } from '@angular/core';
+
+  @Component({
+	selector: 'app-product-alerts',
+	templateUrl: './product-alerts.component.html',
+	styleUrls: ['./product-alerts.component.css']
+  })
+  export class ProductAlertsComponent implements OnInit {
+	constructor() { }
+  
+	ngOnInit() {
+	}
+  
+  }`
+  ]
   content = [
 	// ~~~~~~ PART 1 INTRO ~~~~~~
 	`
 	<h1 class=\"titleH\">Part 1: Getting Started With a Basic Angular App</h1><hr> 
-	<div> </div>
   <p class = "guideText"> You are now staring at an online IDE called Stackblitz. You can  create Angular and React projects that are immediately online & shareable via link in just one click!</p>`,
   `<p class = "guideText"><br><br>This pane, on the right, shows the starting state of the sample Angular app. It defines a frame with a top bar (containing the store name and checkout icon and the title for a product list which will be populated and dynamically updated with data from the application).</p>`,
   `<p class = "guideText"><br><br>The project pane on the left shows the source files that make up the application, including all of the infrastructure and configuration files. <br><br> The currently selected file shows up in the editor pane in the middle where you will be coding.</p>`,
@@ -75,12 +142,13 @@ export class GuideComponent implements OnInit {
     '<h2><strong>Now Let\'s Get To It!</strong></h2> <hr> \
     <p class = \"guideText\"> <em><strong>STEP 1:</strong></em>   In the <em><strong>product-list</strong></em> folder, open the template file <em><strong>product-list.component.html</strong></em>.</p>',
     // STEP 2
-    '<p class = \"guideText\"> <em><strong>STEP 2:</strong></em> Modify the product list template to display a list of product names.</p> \
+`<p class = \"guideText\"> <em><strong>STEP 2:</strong></em> Modify the product list template to display a list of product names.</p> \
 <ul> \
 	<li> \
 		<p>Each product in the list displays the same way, one after another on the page. To iterate over the predefined \
 			list of products, put the <em>*ngFor</em> directive on a <em>&lt;div&gt;</em>, as follows:  \
-			<copy-code></copy-code>\
+			<copy-code id="check" style="color:black;">${this.codeCopy.map(html=>hljs.highlightAuto(html).value)[0]}
+			</copy-code>\
 			<p>With <em>*ngFor</em>, the <em>&lt;div&gt;</em> repeats for each product in the list. Similar to a for loop.</p> \
 			<p><em>*<a href="/">ngFor</a></em> is a "structural directive".\
 				Structural directives shape or reshape the DOM\'s structure, typically by adding, removing, and\
@@ -90,23 +158,24 @@ export class GuideComponent implements OnInit {
 	<li>\
 		<p>To display the names of the products, use the interpolation syntax <strong>{{ }}</strong>. Interpolation renders\
 			a property\'s value as text. Inside the <em><strong>&lt;div&gt;</strong></em>, add an <em><strong>&lt;h3&gt;</strong></em> to display\
-			the interpolation of the product\'s name property:<copy-code></copy-code></p>\
+			the interpolation of the product\'s name property:<copy-code>${this.codeCopy.map(html=>hljs.highlightAuto(html).value)[1]}</copy-code></p>\
 		<p>The preview pane immediately updates to display the name of each product in the list.</p>\
 	</li>\
-</ul>',
+</ul>`,
 // STEP 3
-" <p class = \"guideText\"><em><strong>STEP 3:</strong></em> To make each product name a link to product details, add the <em><strong>&lt;a&gt;</strong></em> element and set its title to\
-		be the product's name by using the property binding <strong><em>[ ]</em></strong> syntax, as follows:<copy-code></copy-code></p>\
+`<p class = \"guideText\"><em><strong>STEP 3:</strong></em> To make each product name a link to product details, add the <em><strong>&lt;a&gt;</strong></em> element and set its title to\
+		be the product's name by using the property binding <strong><em>[ ]</em></strong> syntax, as follows:</p>\
+		<copy-code> ${this.codeCopy.map(html=>hljs.highlightAuto(html).value)[2]} </copy-code>\
 		<p>Interpolation <strong>{{ }}</strong> lets you render the\
 		property value as text; property binding <strong>[ ]</strong> lets you\
-		use the property value in a template expression.</p>",
+		use the property value in a template expression.</p>`,
 	"<p>In the preview pane, hold the pointer over a product\
 		name to see the bound name property value, which is\
 		the product name plus the word \"details\".",
 // STEP 4
-"<p class = \"guideText\"> <em><strong>STEP 4:</strong></em> Add the product descriptions. On the <strong><em>&lt;p&gt;</em></strong> element, use an\
+`<p class = \"guideText\"> <em><strong>STEP 4:</strong></em> Add the product descriptions. On the <strong><em>&lt;p&gt;</em></strong> element, use an\
 		<em>*<a>ngIf</a></em> directive so that Angular only creates the\
-		<strong><em>&lt;p&gt;</em></strong> element if the current product has a description.</p><copy-code></copy-code>",
+		<strong><em>&lt;p&gt;</em></strong> element if the current product has a description.</p><copy-code>${this.codeCopy.map(html=>hljs.highlightAuto(html).value)[3]}</copy-code>`,
 	"<p>The app now displays the name and description of each product in the list. Notice that the final product does not\
 		have a description paragraph. Because the product's description property is empty, Angular doesn't create the\
 		<em><strong>&lt;p&gt;</strong></em> element—including the word \"Description\".</p>",
