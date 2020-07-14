@@ -35,32 +35,26 @@ export class GuideComponent implements OnInit {
     this.currentStep = this.currentStep+1;
 	this.autoScrollDiv.nativeElement.scrollTop = 0;
   }
-  
+
   codeCopy=[`
   <h2>Products</h2>
-  
   <div *ngFor="let product of products">
 
   </div>`,
-  `<h2>Products</h2>
-
+  `
+  <h2>Products</h2>
   <div *ngFor="let product of products">
-  
 	<h3>
 		{{ product.name }}
 	</h3>
-  
-  </div>`,
-  `<h2>Products</h2>
-
+  </div>`,`
+  <h2>Products</h2>
   <div *ngFor="let product of products">
-  
 	<h3>
 	  <a [title]="product.name + ' details'">
 		{{ product.name }}
 	  </a>
 	</h3>
-  
   </div>`,
   `<h2>Products</h2>
 

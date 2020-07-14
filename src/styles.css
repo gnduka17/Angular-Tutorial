@@ -139,6 +139,7 @@
     border-radius: 20px;
     margin-bottom: 10px;
     margin-top: 10px;
+    
   }
   .codeBoxHeader{
     background-color:#E5E3E3;
@@ -148,15 +149,10 @@
   .codeBoxCode{
     color: black;
   }
-  .copyIcon{
-    /* background-color: yellow; */
-    /* display: inline-block; */
+  .copyIcon:hover{
+    background-color: red;
   }
  
-  app-code-example img:hover{
-   opacity: 0.5;
-
-  }
 
   /* Home Page */
   app-home .bodyContainer{
