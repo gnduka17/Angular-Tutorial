@@ -122,6 +122,9 @@ export const content = [
                         a property's value as text. Inside the <em><strong>&lt;div&gt;</strong></em>, add an <em><strong>&lt;h3&gt;</strong></em> to display
                         the interpolation of the product's name property:<copy-code>${codeToCopy["code-2"]}</copy-code></p>
             <p>The preview pane immediately updates to display the name of each product in the list.</p>
+            <div class="imageDiv">
+            <img src="assets/template-syntax-product-names.png" alt="list of product names">
+            </div>
         </li>
     </ul>`,
     // STEP 3
