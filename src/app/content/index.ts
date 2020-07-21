@@ -27,37 +27,37 @@ const codeToCopy={
   <h2>Products</h2>
 
   <div *ngFor="let product of products">
-  
+
 	<h3>
 	  <a [title]="product.name + ' details'">
 		{{ product.name }}
 	  </a>
 	</h3>
-  
+
 	<p *ngIf="product.description">
 	  Description: {{ product.description }}
 	</p>
-  
+
   </div>`).value,
   'code-5': hljs.highlightAuto(`
   <h2>Products</h2>
 
   <div *ngFor="let product of products">
-  
+
 	<h3>
 	  <a [title]="product.name + ' details'">
 		{{ product.name }}
 	  </a>
 	</h3>
-  
+
 	<p *ngIf="product.description">
 	  Description: {{ product.description }}
 	</p>
-  
+
 	<button (click)="share()">
 	  Share
 	</button>
-  
+
   </div>`).value,
   'code-6': hljs.highlightAuto(`
   import { Component, OnInit } from '@angular/core';
@@ -69,7 +69,7 @@ const codeToCopy={
   })
   export class ProductAlertsComponent implements OnInit {
 	constructor() { }
-  
+
 	ngOnInit() {
 	}
   }`).value
@@ -77,29 +77,29 @@ const codeToCopy={
 
 export const content = [
     // ~~~~~~ PART 1 INTRO ~~~~~~
-    `<h1 class=\"titleH\">Part 1: Getting Started With a Basic Angular App</h1><hr> 
+    `<h1 class=\"titleH\">Part 1: Getting Started With a Basic Angular App</h1><hr>
     <p class = "guideText"> You are now staring at an online IDE called Stackblitz. You can  create Angular and React projects that are immediately online & shareable via link in just one click!</p>`,
     `<p class = "guideText"><br><br>This pane, on the right, shows the starting state of the sample Angular app. It defines a frame with a top bar (containing the store name and checkout icon and the title for a product list which will be populated and dynamically updated with data from the application).</p>`,
     `<p class = "guideText"><br><br>The project pane on the left shows the source files that make up the application, including all of the infrastructure and configuration files. <br><br> The currently selected file shows up in the editor pane in the middle where you will be coding.</p>`,
 	// STACKBLITZ TIPS
 	`<h2>StackBlitz tips</h2> <hr>
     <p class ="guideText">Did you know that you can log into StackBlitz to save and resume your work?<br> <br>
-				If you have a GitHub account, you can log into StackBlitz 
-				with that account. In order to save your progress, first 
+				If you have a GitHub account, you can log into StackBlitz
+				with that account. In order to save your progress, first
 				fork the project using the Fork button at the top left,
 				then you'll be able to save your work to your own StackBlitz
                 account by clicking the Save button.
     </p>`,
-    `<h2>StackBlitz tips</h2> <hr> 
-    <p class = "guideText">If the StackBlitz preview pane isn't showing what you 
-	            expect, save and then click the refresh button.</p> 
-	<p class = "guideText">StackBlitz is continually improving, so there may be 
-				slight differences in generated code, but the app's 
+    `<h2>StackBlitz tips</h2> <hr>
+    <p class = "guideText">If the StackBlitz preview pane isn't showing what you
+	            expect, save and then click the refresh button.</p>
+	<p class = "guideText">StackBlitz is continually improving, so there may be
+				slight differences in generated code, but the app's
 				behavior will be the same.</p>`,
-    `<h2>StackBlitz tips</h2> <hr> 
-    <p class = "guideText">When you generate the StackBlitz example apps that 
-				accompany the tutorials, StackBlitz creates the starter 
-				files and mock data for you. The files you'll use throughout 
+    `<h2>StackBlitz tips</h2> <hr>
+    <p class = "guideText">When you generate the StackBlitz example apps that
+				accompany the tutorials, StackBlitz creates the starter
+				files and mock data for you. The files you'll use throughout
 				the tutorials are in the <strong><em>src</em></strong> folder of the StackBlitz example apps.</p>`,
 
     // TEMPLATE SYNTAX...STEP 1
@@ -109,10 +109,10 @@ export const content = [
     `<p class = "guideText"> <em><strong>STEP 2:</strong></em> Modify the product list template to display a list of product names.</p>
     <ul>
         <li>
-            <p>Each product in the list displays the same way, one after another on the page. To iterate over the predefined 
+            <p>Each product in the list displays the same way, one after another on the page. To iterate over the predefined
                         list of products, put the <em>*ngFor</em> directive on a <em>&lt;div&gt;</em>, as follows:</p>
-            <copy-code id="check" style="color:black;">${codeToCopy["code-1"]}</copy-code>
-            <p>With <em>*ngFor</em>, the <em>&lt;div&gt;</em> repeats for each product in the list. Similar to a for loop.</p> 
+            <copy-code id="check" style="color:black;" header="testing!">${codeToCopy["code-1"]}</copy-code>
+            <p>With <em>*ngFor</em>, the <em>&lt;div&gt;</em> repeats for each product in the list. Similar to a for loop.</p>
             <p><em>*<a href="/">ngFor</a></em> is a "structural directive". Structural directives shape or reshape the DOM\'s structure, typically by adding, removing, and
                         manipulating the elements to which they are attached. Directives with an asterisk,*, are
                         structural directives.</p>
@@ -161,14 +161,14 @@ export const content = [
         <li>Interpolation <code>{{ }}</code></li>
         <li>Property binding <code>[ ]</code></li>
         <li>Event binding <code>( )</code></li>
-    </ul> 
+    </ul>
     We will now move onto components!`,
     // COMPONENTS INTRO
     `<h2>Components</h2><hr/>
     <p><strong><em>Components</em></strong> define areas of responsibility in the user interface, or UI,
                 that let you reuse sets of UI functionality.
                 You've already built one with the product list component.</p>`,
-    // PART 2 COMPONENT 
+    // PART 2 COMPONENT
     `<p>A component consists of three things:</p>
     <ul>
         <li><strong>A component class</strong> that handles data and functionality. In the previous section, the product
@@ -329,7 +329,7 @@ export const content = [
 			        <code><a href="api/core/EventEmitter" class="code-anchor">EventEmitter</a>()</code>. This allows the product
 			        alert component to emit an event when the value of the notify property changes.</p>
 	</li>`,
-//ALERT 
+//ALERT
 `<div>
 	<p> When the Angular CLI generates a new component, it includes an empty constructor, the
 		        <code><a href="api/core/OnInit" class="code-anchor">OnInit</a></code> interface, and the <code>ngOnInit()</code>
@@ -387,7 +387,7 @@ export const content = [
 		The app doesn't have any variable states or navigation.
 		There is one URL, and that URL always displays the "My Store" page with a list of products and their
 		descriptions.</p>`,
-//INTRO 
+//INTRO
     `<p>This guide shows you how to use Angular <a href="guide/glossary#router" title="Router definition>routing</a> to
 		        give the user in-app navigation. In a single-page app, instead of loading new pages, you show different
 		        components and data to the user based on where the user is in the application.</p>

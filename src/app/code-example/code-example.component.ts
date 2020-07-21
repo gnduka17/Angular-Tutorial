@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, ViewChild} from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild, Input} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 
@@ -9,6 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
   export class CodeExampleComponent implements AfterViewInit{
     @ViewChild('testingDiv') testingDiv: ElementRef;
+    @Input() header: string;
 
   constructor(private sanitizer: DomSanitizer) {}
 
@@ -25,7 +26,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     range.selectNodeContents(this.testingDiv.nativeElement);
     selection.removeAllRanges();
     selection.addRange(range);
-    
+
     // Copy to the clipboard
     try {
         document.execCommand('copy');
