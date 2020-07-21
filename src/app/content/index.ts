@@ -111,7 +111,7 @@ export const content = [
         <li>
             <p>Each product in the list displays the same way, one after another on the page. To iterate over the predefined 
                         list of products, put the <em>*ngFor</em> directive on a <em>&lt;div&gt;</em>, as follows:</p>
-            <copy-code id="check" style="color:black;">${codeToCopy["code-1"]}</copy-code>
+            <copy-code id="check" style="color:black;" headerTitle="TESTING">${codeToCopy["code-1"]}</copy-code>
             <p>With <em>*ngFor</em>, the <em>&lt;div&gt;</em> repeats for each product in the list. Similar to a for loop.</p> 
             <p><em>*<a href="/">ngFor</a></em> is a "structural directive". Structural directives shape or reshape the DOM\'s structure, typically by adding, removing, and
                         manipulating the elements to which they are attached. Directives with an asterisk,*, are
@@ -123,7 +123,7 @@ export const content = [
                         the interpolation of the product's name property:<copy-code>${codeToCopy["code-2"]}</copy-code></p>
             <p>The preview pane immediately updates to display the name of each product in the list.</p>
             <div class="imageDiv">
-            <img src="assets/template-syntax-product-names.png" alt="list of product names">
+              <img src="assets/template-syntax-product-names.png" alt="list of product names">
             </div>
         </li>
     </ul>`,
@@ -136,7 +136,10 @@ export const content = [
                 use the property value in a template expression.</p>`,
     `<p>In the preview pane, hold the pointer over a product
                 name to see the bound name property value, which is
-                the product name plus the word "details".`,
+                the product name plus the word "details".</p>
+    <div class="imageDiv">            
+      <img src="assets/template-syntax-product-anchor.png" alt="product anchor">
+    </div>`,
     // STEP 4
     `<p class = "guideText"> <em><strong>STEP 4:</strong></em> Add the product descriptions. On the <strong><em>&lt;p&gt;</em></strong> element, use an
                 <em>*<a>ngIf</a></em> directive so that Angular only creates the
@@ -144,14 +147,23 @@ export const content = [
                 <copy-code>${codeToCopy["code-4"]}</copy-code>`,
     `<p>The app now displays the name and description of each product in the list. Notice that the final product does not
                 have a description paragraph. Because the product's description property is empty, Angular doesn't create the
-                <em><strong>&lt;p&gt;</strong></em> element—including the word "Description".</p>`,
+                <em><strong>&lt;p&gt;</strong></em> element—including the word "Description".</p>
+    <div class="imageDiv">            
+      <img src="assets/template-syntax-product-description.png" alt="product description">
+    </div>`,
     // STEP 5
     `<p class = "guideText"> <em><strong>STEP 5:</strong></em>. Add a button so users can share a product with friends. Bind the button's <em><strong>click</strong></em> event to the
                 <em><strong>share()</strong></em> method (in <em><strong>product-list.component.ts</strong></em>). Event binding uses a set of
                 parentheses, <strong>( )</strong>, around the event, as in the following <em><strong>&lt;button&gt;</strong></em> element:</p>
     <copy-code>${codeToCopy["code-5"]}</copy-code>`,
     `<p>Each product now has a "Share" button:</p>
-    <p>Test the "Share" button:</p>`,
+    <div class="imageDiv">            
+      <img src="assets/template-syntax-product-share-button.png" alt="product share button">
+    </div>
+    <p>Test the "Share" button:</p>
+    <div class="imageDiv">            
+      <img src="assets/template-syntax-product-share-alert.png" alt="product share alert">
+    </div>`,
     // CONCLUDE TEMPLATE SYNTAX
     `<p class = "guideText">The app now has a product list and sharing feature.
                 In the process, you've learned to use five common features of Angular's template syntax:</p>
@@ -186,6 +198,9 @@ export const content = [
                 responsibility.</p>`,
     // PART 3 COMPONENT
     `<p>Currently, the example app has three components:</p>
+    <div class="imageDiv">            
+      <img src="assets/app-components.png" alt="app components distinction image">
+    </div>
     <ul>
         <li><em><strongapp-root</strong></em> (orange box) is the application shell. This is the first component to load and the parent
             of all other components. You can think of it as the base page.</li>
@@ -215,9 +230,10 @@ export const content = [
             <li>
                 <p>Right click on the <code>app</code> folder and use the <code>Angular Generator</code> to generate a
                     new component named <code>product-alerts</code>.</p>
-                <div class="lightbox">
-                    <img src="generated/images/guide/start/generate-component.png" alt="StackBlitz command to generate component" width="407" height="368">
-        </div>
+                    <div class="imageDiv">            
+                      <img src="assets/generate-component.png" alt="generate component">
+                    </div>
+                
                 <p>The generator creates starter files for all three parts of the component:</p>
                     <ul>
                         <li><code>product-alerts.component.ts</code></li>
@@ -297,9 +313,9 @@ export const content = [
     `<p>The new product alert component takes a product as input from the product list. With that input, it shows or hides
 	            the "Notify Me" button, based on the price of the product. The Phone XL price is over $700, so the "Notify Me"
 	            button appears on that product.</p>
-    <div class="lightbox">
-	    <img src="generated/images/guide/start/product-alert-button.png" alt="Product alert button added to products over $700" width="259" height="406">
-    </div>
+      <div class="imageDiv">            
+        <img src="assets/product-alert-button.png" alt="product alert button">
+      </div>
 	<div>
 		<p>See <a href="guide/component-interaction" title="Components &amp; Templates > Component Interaction">Component Interaction</a> for more
 			        information about passing data from a parent to child component, intercepting and acting upon a value from
@@ -358,8 +374,8 @@ export const content = [
 // STEP 7
     `<li>
         <p>Try the "Notify Me" button:</p>
-        <div class="lightbox">
-            <img src="generated/images/guide/start/product-alert-notification.png" alt="Product alert notification confirmation dialog" width="329" height="104">
+        <div class="imageDiv">            
+          <img src="assets/product-alert-notification.png" alt="product alert notification">
         </div>
     </li>`,
 

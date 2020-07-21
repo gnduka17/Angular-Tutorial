@@ -133,6 +133,7 @@
     border: 1px solid #dbdbdb;
     box-shadow: 2px 2px 5px 0 rgba(0,0,0,.2);
     padding: 32px;
+    margin: 20px;
   }
   .nextButton{
     float: right;
