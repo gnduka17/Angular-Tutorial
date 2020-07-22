@@ -111,7 +111,7 @@ export const content = [
         <li>
             <p>Each product in the list displays the same way, one after another on the page. To iterate over the predefined 
                         list of products, put the <em>*ngFor</em> directive on a <em>&lt;div&gt;</em>, as follows:</p>
-            <copy-code id="check" style="color:black;" headerTitle="TESTING">${codeToCopy["code-1"]}</copy-code>
+            <copy-code header="src/app/product-list/product-list.component.html">${codeToCopy["code-1"]}</copy-code>
             <p>With <em>*ngFor</em>, the <em>&lt;div&gt;</em> repeats for each product in the list. Similar to a for loop.</p> 
             <p><em>*<a href="/">ngFor</a></em> is a "structural directive". Structural directives shape or reshape the DOM\'s structure, typically by adding, removing, and
                         manipulating the elements to which they are attached. Directives with an asterisk,*, are
@@ -120,7 +120,7 @@ export const content = [
         <li>
             <p>To display the names of the products, use the interpolation syntax <strong>{{ }}</strong>. Interpolation renders
                         a property's value as text. Inside the <em><strong>&lt;div&gt;</strong></em>, add an <em><strong>&lt;h3&gt;</strong></em> to display
-                        the interpolation of the product's name property:<copy-code>${codeToCopy["code-2"]}</copy-code></p>
+                        the interpolation of the product's name property:<copy-code header="src/app/product-list/product-list.component.html">${codeToCopy["code-2"]}</copy-code></p>
             <p>The preview pane immediately updates to display the name of each product in the list.</p>
             <div class="imageDiv">
               <img src="assets/template-syntax-product-names.png" alt="list of product names">
@@ -130,7 +130,7 @@ export const content = [
     // STEP 3
     `<p class = "guideText"><em><strong>STEP 3:</strong></em> To make each product name a link to product details, add the <em><strong>&lt;a&gt;</strong></em> element and set its title to
                 be the product's name by using the property binding <strong><em>[ ]</em></strong> syntax, as follows:</p>
-    <copy-code> ${codeToCopy["code-3"]} </copy-code>
+    <copy-code header="src/app/product-list/product-list.component.html"> ${codeToCopy["code-3"]} </copy-code>
     <p>Interpolation <strong>{{ }}</strong> lets you render the
                 property value as text; property binding <strong>[ ]</strong> lets you
                 use the property value in a template expression.</p>`,
@@ -144,7 +144,7 @@ export const content = [
     `<p class = "guideText"> <em><strong>STEP 4:</strong></em> Add the product descriptions. On the <strong><em>&lt;p&gt;</em></strong> element, use an
                 <em>*<a>ngIf</a></em> directive so that Angular only creates the
                 <strong><em>&lt;p&gt;</em></strong> element if the current product has a description.</p>
-                <copy-code>${codeToCopy["code-4"]}</copy-code>`,
+                <copy-code header="src/app/product-list/product-list.component.html">${codeToCopy["code-4"]}</copy-code>`,
     `<p>The app now displays the name and description of each product in the list. Notice that the final product does not
                 have a description paragraph. Because the product's description property is empty, Angular doesn't create the
                 <em><strong>&lt;p&gt;</strong></em> element—including the word "Description".</p>
@@ -155,7 +155,7 @@ export const content = [
     `<p class = "guideText"> <em><strong>STEP 5:</strong></em>. Add a button so users can share a product with friends. Bind the button's <em><strong>click</strong></em> event to the
                 <em><strong>share()</strong></em> method (in <em><strong>product-list.component.ts</strong></em>). Event binding uses a set of
                 parentheses, <strong>( )</strong>, around the event, as in the following <em><strong>&lt;button&gt;</strong></em> element:</p>
-    <copy-code>${codeToCopy["code-5"]}</copy-code>`,
+    <copy-code header="src/app/product-list/product-list.component.html">${codeToCopy["code-5"]}</copy-code>`,
     `<p>Each product now has a "Share" button:</p>
     <div class="imageDiv">            
       <img src="assets/template-syntax-product-share-button.png" alt="product share button">

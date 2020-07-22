@@ -9,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class CodeExampleComponent implements AfterViewInit {
   @ViewChild('testingDiv') testingDiv: ElementRef;
-  @Input() headerTitle: string;
+  @Input() header: string;
 
   constructor(private sanitizer: DomSanitizer) { }
 

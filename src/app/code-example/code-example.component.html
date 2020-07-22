@@ -1,9 +1,11 @@
 <div class="codeBox">
-    <div style="background-color: red; height: 30px; color: black;" class = "codeBoxHeader">
-        {{ headerTitle }}</div>
-    <div class = "codeBoxCode">
+    <div class="codeBoxHeader">
+        {{ header }}
+    </div>
+    <div class="codeBoxCode">
         <div class="copyIcon">
-         <img  style="width: 20px; float: right; margin-top:5px" src="assets/copyicon.png" title="Click to Copy" (click)="copyCode()">
+            <img style="width: 20px; float: right; margin-top:5px" src="assets/copyicon.png" title="Click to Copy"
+                (click)="copyCode()">
         </div>
         <div class="codeInCodeBox" #testingDiv>
             <pre>

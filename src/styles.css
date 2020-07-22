@@ -150,9 +150,10 @@
     
   }
   .codeBoxHeader{
-    background-color:#E5E3E3;
-    height: 20px;
+    background-color:red;
     margin: 0px auto;
+    color:white;
+    padding: 10px;
   }
   .codeBoxCode{
     color: black;
