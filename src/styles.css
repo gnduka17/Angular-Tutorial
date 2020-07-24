@@ -3,22 +3,17 @@
 
 * {
     font-family: 'Roboto', Arial, sans-serif;
-    /* color: #616161; */
-    /* box-sizing: border-box; */
     -webkit-font-smoothing: antialiased;
-    /* -moz-osx-font-smoothing: grayscale; */
   }
   
   html,body {
     margin: 0;
     padding: 0;
     height:100%;
-    /* width: 100%; */
   }
   
   .homeContainer {
     height: 100%;
-    /* width: 100%; */
   }
   
   /* Text */
@@ -111,8 +106,32 @@
   }
 
   /* Guide */
-  .guideText{
-    font-size: 15px;
+  app-guide h1{
+    font-weight: bold;
+    font-size: 35px;
+
+  }
+  app-guide h2{
+    font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  app-guide p{
+    font-size: 16px;
+  }
+  app-guide a{
+    text-decoration:underline;
+  }
+  app-guide img{
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .instructions{
+    margin-top: 20px;
+    width:70%;
+    margin-left: auto;
+    margin-right:auto;
   }
   .GuideDiv{
     background-color:#1976d2;
@@ -157,9 +176,24 @@
   }
   .codeBoxCode{
     color: black;
+    background-color: violet;
   }
-  .copyIcon:hover{
-    background-color: red;
+  .codeInCodeBox{
+    color: black;
+    font-size: 12px;
+    font-size: 12vw;
+    max-width: 100%;
+    max-height: 100%;
+    /* display: inline-block; */
+    background-color: yellow;
+
+  }
+  .iconImage{
+    width: 20px; 
+  }
+  .stepsTitle{
+    font-weight: bold;
+    margin-right: 10px;
   }
 
     /* Tutor Page */
@@ -217,8 +251,6 @@
     color: white;
     margin: 0;
   }
-
-
 
   
   

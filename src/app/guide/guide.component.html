@@ -1,5 +1,12 @@
 <div class="GuideDiv" #autoScrollDiv>
-  <div [innerHTML]="currentContent"></div>
+
+	<div class="expandCollapseDiv" >
+		<img *ngIf = expand class="iconImage" style="float: right;" src="assets/expandIcon.png" title="Expand Box"
+			(click)="expandBox()">
+		<img *ngIf = !expand class="iconImage" style="float: right; display: hidden;" src="assets/collapseIcon.png" title="Minimize Box"
+		(click)="expandBox()">
+	</div>
+  <div class="instructions" [innerHTML]="currentContent"></div>
 	<div>
 		<button class="backButton" (click)="backPage()">Back</button>
 		<button class="nextButton" (click)="nextPage()">Next</button>

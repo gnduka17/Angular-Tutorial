@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, } from "@angular/core";
 import { GuideStatesService } from "../guide-states.service";
-import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { content } from '../content/index';
 import hljs from 'highlight.js';
 import javascript from 'highlight.js/lib/languages/javascript';
@@ -13,8 +13,10 @@ hljs.registerLanguage('javascript', javascript);
 })
 export class GuideComponent implements OnInit {
   @ViewChild('autoScrollDiv') autoScrollDiv: ElementRef;
+  // @ViewChild('expandableDiv') expandableDiv: ElementRef;
 
   currentStep = 0;
+  expand = true;
   content = content;
   currentContent: SafeHtml;
 
@@ -26,7 +28,10 @@ export class GuideComponent implements OnInit {
 
   constructor(public guideStates: GuideStatesService, private sanitizer: DomSanitizer) { this.updateContent(); }
   ngOnInit() { }
+  updateContent() {
+    this.currentContent = this.getCurrentContent();
 
+  }
   backPage() {
     this.currentStep = this.currentStep - 1;
     if (this.currentStep < 0) {
@@ -40,9 +45,17 @@ export class GuideComponent implements OnInit {
     this.autoScrollDiv.nativeElement.scrollTop = 0;
     this.updateContent();
   }
-  updateContent() {
-    this.currentContent = this.getCurrentContent();
-
+  expandBox(){
+    if(this.expand){
+      this.autoScrollDiv.nativeElement.style.height=300+'px';
+    }
+    else{
+      this.autoScrollDiv.nativeElement.style.height=220+'px';
+    }
+    this.expand=!this.expand;
+    
   }
-
 }
+
+
+
