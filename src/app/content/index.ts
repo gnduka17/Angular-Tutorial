@@ -287,7 +287,7 @@ export const content = [
 
     <p>For more information about components and how they interact with templates, see <a
             href="https://angular.io/guide/architecture-components"
-            title="Concepts > Introduction to Components and Templates">Introduction to Components</a>.</p>`,
+            title="Concepts > Introduction to Components and Templates" target="_blank" rel="noopener noreferrer">Introduction to Components</a>.</p>`,
   // INPUT INTRO
   `<h2>Input</h2><hr/>
     <p>Currently, the product list displays the name and description of each product.
@@ -297,7 +297,7 @@ export const content = [
                 price, and, if the price is greater than $700, displays a "Notify Me" button that lets users sign up for
                 notifications when the product goes on sale.</p>`,
   // STEP 1
-  `<p>Create a new product alerts component by right clicking on the <em><strong>app</strong></em> folder and use the <em><strong>Angular Generator</strong></em> to generate a
+  `<p> <span class="stepsTitle">STEP 1:</span>  Create a new product alerts component by right clicking on the <em><strong>app</strong></em> folder and use the <em><strong>Angular Generator</strong></em> to generate a
         new component named <em><strong>product-alerts</strong></em>.</p>
         <div class="imageDiv">            
           <img src="assets/generate-component.png" alt="generate component">
@@ -310,11 +310,11 @@ export const content = [
             <li><code>product-alerts.component.css</code></li>
         </ul>`,
   // STEP 2
-  `<p>Open <em><strong>product-alerts.component.ts</strong></em>.</p>
+  `<p><span class="stepsTitle">STEP 2:</span>Open <em><strong>product-alerts.component.ts</strong></em>.</p>
   <copy-code header="src/app/product-alerts/product-alerts.component.ts">${codeToCopy["code-6"]}</copy-code>
   <ol type="a">
     <li>
-      <p>Notice the <code>@<a href="https://angular.io/api/core/Component" class="code-anchor">Component</a>()</code> decorator.
+      <p>Notice the <strong>@<a href="https://angular.io/api/core/Component" class="code-anchor" target="_blank" rel="noopener noreferrer" >Component</a>()</strong> decorator.
                 This indicates that the following class is a component. It provides metadata about the component,
                 including its selector, templates, and styles.</p>
       <ul>
@@ -334,41 +334,39 @@ export const content = [
     </li>
   </ol>`,
   // STEP 3
-  `<p>Set up the new product alerts component to receive a product as input by importing <strong><a href="angular.io/api/core/Input" class="code-anchor">Input</a></strong> from
+  `<p> <span class="stepsTitle">STEP 3:</span>  Set up the new product alerts component to receive a product as input by importing <strong><a href="angular.io/api/core/Input" class="code-anchor" target="_blank" rel="noopener noreferrer">Input</a></strong> from
           <strong>@angular/core</strong>.</p>
-  <copy-code header="src/app/product-alerts/product-alerts.component.ts">${codeToCopy["code-7"]}</copy-code>
-	
-  <p>In the <code>ProductAlertsComponent</code> class definition, define a property named
-            <code>product</code> with an <code>@<a href="api/core/Input" class="code-anchor">Input</a>()</code>
-            decorator. The <code>@<a href="api/core/Input" class="code-anchor">Input</a>()</code> decorator
+  <copy-code header="src/app/product-alerts/product-alerts.component.ts">${codeToCopy["code-7"]}</copy-code>`,
+	//step 3.5
+  `<p> <span class="stepsTitle">STEP 4:</span>In the <strong>ProductAlertsComponent</strong> class definition, define a property named
+            <strong>product</strong> with an <strong>@<a href="angular.io/api/core/Input" class="code-anchor" target="_blank" rel="noopener noreferrer">Input</a>()</strong>
+            decorator. The <strong>@<a href="angular.io/api/core/Input" class="code-anchor" target="_blank" rel="noopener noreferrer">Input</a>()</strong> decorator
             indicates that the property value passes in from the component's parent, the product list component.
   </p>
   <copy-code header="src/app/product-alerts/product-alerts.component.ts">${codeToCopy["code-8"]}</copy-code>
 		`,
   // STEP 4
-  `<li>
-		<p>Define the view for the new product alert component.</p>
-		<ol>
-			<li>Open the <code>product-alerts.component.html</code> template and replace the placeholder paragraph with
-				a "Notify Me" button that appears if the product price is over $700.</li>
-		</ol>
-	</li>`,
+  `<p> <span class="stepsTitle">STEP 5:</span> Define the view for the new product alert component.</p>
+  <li>Open the <strong>product-alerts.component.html</strong> template and replace the placeholder paragraph with
+    a "Notify Me" button that appears if the product price is over $700.</li>
+  <copy-code header="src/app/product-alerts/product-alerts.component.html">${codeToCopy["code-9"]}</copy-code>
+	`,
   // STEP 5
-  `<li>
-		<p>Display the new product alert component as a child of the product list.</p>
-		<ol>
+  `<p> <span class="stepsTitle">STEP 6:</span>Display the new product alert component as a child of the product list.</p>
+		<ol type="a">
 			<li>
-				<p>Open <code>product-list.component.html</code>.</p>
+				<p>Open <strong>product-list.component.html</strong>.</p>
 			</li>
 			<li>
-				<p>To include the new component, use its selector, <code>app-product-alerts</code>, as you would an HTML
+				<p>To include the new component, use its selector, <strong>app-product-alerts</strong>, as you would an HTML
 					        element.</p>
 			</li>
 			<li>
 				<p>Pass the current product as input to the component using property binding.</p>
 			</li>
-		</ol>
-	</li>`,
+    </ol>
+    <copy-code header="src/app/product-list/product-list.component.html">${codeToCopy["code-10"]}</copy-code>
+	`,
   // CONCLUDE INPUT
   `<p>The new product alert component takes a product as input from the product list. With that input, it shows or hides
 	            the "Notify Me" button, based on the price of the product. The Phone XL price is over $700, so the "Notify Me"
@@ -377,83 +375,75 @@ export const content = [
         <img src="assets/product-alert-button.png" alt="product alert button">
       </div>
 	<div>
-		<p>See <a href="guide/component-interaction" title="Components &amp; Templates > Component Interaction">Component Interaction</a> for more
+		<p>See <a href="angular.io/guide/component-interaction" title="Components &amp; Templates > Component Interaction" target="_blank" rel="noopener noreferrer">Component Interaction</a> for more
 			        information about passing data from a parent to child component, intercepting and acting upon a value from
 			        the parent, and detecting and acting on changes to input property values.</p>
 	</div>`,
   // OUTPUT INTRO
-  `<h2>Output</h2>
+  `<h2>Output</h2><hr/>
     <p>To make the "Notify Me" button work, you need to configure two things:</p>
     <ul>
         <li>the product alert component to emit an event when the user clicks "Notify Me"</li>
         <li>the product list component to act on that event</li>
     </ul>`,
   // STEP 1
-  `<li>
-		<p>Open <code>product-alerts.component.ts</code>.</p>
-	</li>`,
-  // STEP 2
-  `<li>
-		<p>Import <code><a href="api/core/Output" class="code-anchor">Output</a></code> and
-			        <code><a href="api/core/EventEmitter" class="code-anchor">EventEmitter</a></code> from
-			        <code>@angular/core</code>:</p>
-	</li>`,
+  `<p> <span class="stepsTitle">STEP 1:</span>Open <code>product-alerts.component.ts</code>.</p>
+  <li>
+		<p>Import <strong><a href="angular.io/api/core/Output" class="code-anchor" target="_blank" rel="noopener noreferrer">Output</a></strong> and
+			        <strong><a href="api/core/EventEmitter" class="code-anchor" target="_blank" rel="noopener noreferrer">EventEmitter</a></strong> from
+			        <strong>@angular/core</strong>:</p>
+  </li>
+  <copy-code header="src/app/product-alerts/product-alerts.component.ts">${codeToCopy["code-11"]}</copy-code>
+  `,
   // STEP 3
-  `<li>
-		<p>In the component class, define a property named <code>notify</code> with an
-			        <code>@<a href="api/core/Output" class="code-anchor">Output</a>()</code> decorator and an instance of
-			        <code><a href="api/core/EventEmitter" class="code-anchor">EventEmitter</a>()</code>. This allows the product
-			        alert component to emit an event when the value of the notify property changes.</p>
-	</li>`,
-  //ALERT 
-  `<div>
-	<p> When the Angular CLI generates a new component, it includes an empty constructor, the
-		        <code><a href="api/core/OnInit" class="code-anchor">OnInit</a></code> interface, and the <code>ngOnInit()</code>
+  `<p> <span class="stepsTitle">STEP 2:</span>In the component class, define a property named <strong>notify</strong> with an
+			        <strong>@<a href="angular.io/api/core/Output" class="code-anchor" target="_blank" rel="noopener noreferrer">Output</a>()</strong> decorator and an instance of
+			        <strong><a href="angular.io/api/core/EventEmitter" class="code-anchor" target="_blank" rel="noopener noreferrer"> EventEmitter</a>()</strong>. This allows the product
+              alert component to emit an event when the value of the notify property changes.</p>
+  <copy-code header="src/app/product-alerts/product-alerts.component.ts">${codeToCopy["code-12"]}</copy-code>
+
+	<p> <span class="stepsTitle">NOTE:</span> When the Angular CLI generates a new component, it includes an empty constructor, the
+		        <strong><a href="angular.io/api/core/OnInit" class="code-anchor">OnInit</a></strong> interface, and the <strong>ngOnInit()</strong>
 		        method.
-		        Since the following example isn't using them, they are omitted here for brevity.</p>
-</div>`,
+		        Since the following example isn't using them, they are omitted here for brevity.</p>`,
   // STEP 4
-  `<li>
-        <p>In the product alert template, <code>product-alerts.component.html</code>, update the "Notify Me" button with
+  `<p> <span class="stepsTitle">STEP 3:</span>In the product alert template, <strong>product-alerts.component.html</strong>, update the "Notify Me" button with
         an event binding to call the <code>notify.emit()</code> method.</p>
-	</li>`,
+  <copy-code header="src/app/product-alerts/product-alerts.component.html">${codeToCopy["code-13"]}</copy-code>
+
+	`,
   // STEP 5
-  `<li>
-        <p>Next, define the behavior that should happen when the user clicks the button. Recall that it's the parent,
+  `<p> <span class="stepsTitle">STEP 4:</span>Next, define the behavior that should happen when the user clicks the button. Recall that it's the parent,
                 product list component—not the product alerts component—that acts when the child raises the event. In
-                <code>product-list.component.ts</code>, define an <code>onNotify()</code> method, similar to the
-                <code>share()</code> method:</p>
-    </li>`,
+                <strong>product-list.component.ts</strong>, define an <strong>onNotify()</strong> method, similar to the
+                <strong>share()</strong> method:</p>
+  <copy-code header="src/app/product-list/product-list.component.ts">${codeToCopy["code-14"]}</copy-code>
+  `,
   // STEP 6
-  `<li>
-		<p>Finally, update the product list component to receive output from the product alerts component.</p>
-		<p>In <code>product-list.component.html</code>, bind the <code>app-product-alerts</code> component (which is
-			        what displays the "Notify Me" button) to the <code>onNotify()</code> method of the product list component.
-		</p>
-	</li>`,
+  `<p> <span class="stepsTitle">STEP 5:</span> Finally, update the product list component to receive output from the product alerts component.</p>
+		<p>In <strong>product-list.component.html</strong>, bind the <strong>app-product-alerts</strong> component (which is
+			        what displays the "Notify Me" button) to the <strong>onNotify()</strong> method of the product list component.
+    </p>
+    <copy-code header="src/app/product-list/product-list.component.html">${codeToCopy["code-15"]}</copy-code>
+    `,
   // STEP 7
-  `<li>
-        <p>Try the "Notify Me" button:</p>
+  `<p> <span class="stepsTitle">STEP 6:</span> Try the "Notify Me" button:</p>
         <div class="imageDiv">            
           <img src="assets/product-alert-notification.png" alt="product alert notification">
         </div>
-    </li>`,
-
-  //ALERT
-  `<p>See <a href="guide/component-interaction" title="Components &amp; Templates > Component Interaction">Component
+  <p> <span class="stepsTitle">NOTE: </span>See <a href="angular.io/guide/component-interaction" title="Components &amp; Templates > Component Interaction" target="_blank" rel="noopener noreferrer" >Component
                 Interaction</a> for more information about listening for events from child components, reading child
                 properties or invoking child methods, and using a service for bi-directional communication between components.
-    </p>`,
+  </p>`,
 
   // NEXT STEPS
-  `<h2>Next steps</h2>
-    <p>Congratulations! You've completed your first Angular app!</p>
+  `<h2>Next steps</h2><hr/>
+    <p style="font-size:20px;">Congratulations! You've completed your first Angular app!</p>
     <p>You have a basic online store catalog with a product list, "Share" button, and "Notify Me" button.
                 You've learned about the foundation of Angular: components and template syntax.
                 You've also learned how the component class and template interact, and how components communicate with each other.
-    </p>`,
-  // CONCLUDE STEP 1
-  `<li>Next section, "In-app navigation", you will create a product details page that can be accessed by clicking a product name and that has its own URL
+    </p>
+    <li>Next section, "In-app navigation", you will create a product details page that can be accessed by clicking a product name and that has its own URL
 		pattern.</li>`,
 
   // ~~~~~~~~ PART 2 IN APP NAVIGATION ~~~~~~~~~

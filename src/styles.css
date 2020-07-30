@@ -29,7 +29,6 @@
   
   h2 {
     font-size: 20px;
-    text-align: center;
   }
   
   h1, h2 {
@@ -41,7 +40,6 @@
   }
   
   /* Hyperlink */
-  
   a {
     cursor: pointer;
     color: #393939;
@@ -72,7 +70,6 @@
   
   /* Button */
   .button, button {
-    /* display: inline-flex; */
     align-items: center;
     padding: 8px 16px;
     border-radius: 2px;
@@ -115,6 +112,7 @@
     font-weight: bold;
     font-size: 20px;
     font-weight: bold;
+    text-align: center;
   }
   app-guide p{
     font-size: 16px;
@@ -145,6 +143,8 @@
     border-radius: 25px;
     overflow-y: auto;
     height:220px;
+    margin-left: 16px;
+    margin-right: 16px;
   }
   .imageDiv{
     background-color:#ebebeb;
@@ -156,10 +156,10 @@
   }
   .nextButton{
     float: right;
-    margin-bottom:10px;
+    margin:15px;
   }
   .backButton{
-    margin-bottom:10px;
+    margin:15px;
   }
   .codeBox{
     background-color:#FAFAFA;
@@ -176,20 +176,18 @@
   }
   .codeBoxCode{
     color: black;
-    background-color: violet;
   }
   .codeInCodeBox{
     color: black;
-    font-size: 12px;
-    font-size: 12vw;
+    font-size: 90%;
     max-width: 100%;
     max-height: 100%;
-    /* display: inline-block; */
-    background-color: yellow;
+    margin-left: 10px;
 
   }
   .iconImage{
     width: 20px; 
+    margin:15px;
   }
   .stepsTitle{
     font-weight: bold;
@@ -197,9 +195,19 @@
   }
 
     /* Tutor Page */
-  app-tutor-page div{
+  app-tutor-page .container{
     margin-right: 16px;
     margin-left: 16px;
+  }
+  
+  /* Product List */
+  app-product-list a{
+    color:#1976d2;
+  }
+  app-product-list button{
+    background-color:#1976d2;
+    color: white;
+
   }
 
   /* Home Page */
@@ -227,9 +235,6 @@
   app-home .button{
     background-color: #1976d2;
     color: white;
-    /* text-align: center; */
-    /* display: block; */
-    /* width:20%; */
   }
   app-home .homeButtonDiv{
     text-align: center;
@@ -251,8 +256,6 @@
     color: white;
     margin: 0;
   }
-
-  
   
   /* Checkout Cart, Shipping Prices */
   

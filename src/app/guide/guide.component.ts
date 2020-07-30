@@ -47,7 +47,7 @@ export class GuideComponent implements OnInit {
   }
   expandBox(){
     if(this.expand){
-      this.autoScrollDiv.nativeElement.style.height=300+'px';
+      this.autoScrollDiv.nativeElement.style.height=500+'px';
     }
     else{
       this.autoScrollDiv.nativeElement.style.height=220+'px';
